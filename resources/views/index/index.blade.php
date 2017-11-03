@@ -1,132 +1,115 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- ZUI 标准版压缩后的 CSS 文件 -->
-        <link rel="stylesheet" href="//cdn.bootcss.com/zui/1.7.0/css/zui.min.css">
-        <style>
-            .footer {
-                padding-top: 20px;
-                background: #333;
-            }
-        </style>
-    </head>
-    <body>
+@extends('layouts.master')
+@section('content')
     {{--导航--}}
-        <div class="container">
-            <nav class="navbar" role="navigation">
-                <div class="container-fluid">
-                    <!-- 导航头部 -->
-                    <div class="navbar-header">
-                        <!-- 移动设备上的导航切换按钮 -->
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-example">
-                            <span class="sr-only">切换导航</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <!-- 品牌名称或logo -->
-                        <a class="navbar-brand" href="#">LOGO</a>
-                    </div>
-                    <!-- 导航项目 -->
-                    <div class="collapse navbar-collapse navbar-collapse-example">
-                        <!-- 一般导航项目 -->
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">首页</a></li>
-                            <li class="dropdown dropdown-hover">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">所有产品 <span class="caret dropdown-hover"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">耳机</a></li>
-                                        <li><a href="#">扬声器</a></li>
-                                        <li><a href="#">无线扬声器</a></li>
-                                        <li><a href="#">放大器</a></li>
-                                        <li><a href="#">线材</a></li>
-                                    </ul>
-                            </li>
-                            <li><a href="#">寻找门店 </a></li>
-                            <li><a href="#">技术支持 </a></li>
-                            <li><a href="#">关于我们 </a></li>
-                        </ul>
-                    </div><!-- END .navbar-collapse -->
+    <div class="container">
+        <nav class="navbar" role="navigation">
+            <div class="container-fluid">
+                <!-- 导航头部 -->
+                <div class="navbar-header">
+                    <!-- 移动设备上的导航切换按钮 -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-example">
+                        <span class="sr-only">切换导航</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- 品牌名称或logo -->
+                    <a class="navbar-brand" href="#">LOGO</a>
                 </div>
-            </nav>
-        </div>
+                <!-- 导航项目 -->
+                <div class="collapse navbar-collapse navbar-collapse-example">
+                    <!-- 一般导航项目 -->
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">首页</a></li>
+                        <li class="dropdown dropdown-hover">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">所有产品 <span class="caret dropdown-hover"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">耳机</a></li>
+                                <li><a href="#">扬声器</a></li>
+                                <li><a href="#">无线扬声器</a></li>
+                                <li><a href="#">放大器</a></li>
+                                <li><a href="#">线材</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">寻找门店 </a></li>
+                        <li><a href="#">技术支持 </a></li>
+                        <li><a href="#">关于我们 </a></li>
+                    </ul>
+                </div><!-- END .navbar-collapse -->
+            </div>
+        </nav>
+    </div>
     {{--滚动图--}}
-        <div id="myNiceCarousel" class="carousel slide" data-ride="carousel">
-                <!-- 圆点指示器 -->
-                <ol class="carousel-indicators">
-                    <li data-target="#myNiceCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myNiceCarousel" data-slide-to="1"></li>
-                    <li data-target="#myNiceCarousel" data-slide-to="2"></li>
-                </ol>
+    <div id="myNiceCarousel" class="carousel slide" data-ride="carousel">
+        <!-- 圆点指示器 -->
+        <ol class="carousel-indicators">
+            <li data-target="#myNiceCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myNiceCarousel" data-slide-to="1"></li>
+            <li data-target="#myNiceCarousel" data-slide-to="2"></li>
+        </ol>
 
-                <!-- 轮播项目 -->
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <img alt="First slide" src="http://zui.sexy/docs/img/slide1.jpg">
-                        <div class="carousel-caption">
-                            <h3>我是第一张幻灯片</h3>
-                            <p>:)</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img alt="Second slide" src="http://zui.sexy/docs/img/slide2.jpg">
-                        <div class="carousel-caption">
-                            <h3>我是第二张幻灯片</h3>
-                            <p>0.0</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img alt="Third slide" src="http://zui.sexy/docs/img/slide3.jpg">
-                        <div class="carousel-caption">
-                            <h3>我是第三张幻灯片</h3>
-                            <p>最后一张咯~</p>
-                        </div>
-                    </div>
+        <!-- 轮播项目 -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img alt="First slide" src="http://zui.sexy/docs/img/slide1.jpg">
+                <div class="carousel-caption">
+                    <h3>我是第一张幻灯片</h3>
+                    <p>:)</p>
                 </div>
-
-                <!-- 项目切换按钮 -->
-                <a class="left carousel-control" href="#myNiceCarousel" data-slide="prev">
-                    <span class="icon icon-chevron-left"></span>
-                </a>
-                <a class="right carousel-control" href="#myNiceCarousel" data-slide="next">
-                    <span class="icon icon-chevron-right"></span>
-                </a>
             </div>
-{{--卡片--}}
-        <div class="cards">
-            <div class="col-md-6 col-sm-6 col-lg-6">
-                <div class="card"><img src="http://zui.sexy/docs/img/img5.jpg" alt=""></div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-lg-6">
-                <div class="card"><img src="http://zui.sexy/docs/img/img5.jpg" alt=""></div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-lg-6">
-                <div class="card"><img src="http://zui.sexy/docs/img/img5.jpg" alt=""></div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-lg-6">
-                <div class="card"><img src="http://zui.sexy/docs/img/img5.jpg" alt=""></div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-lg-6">
-                <div class="card"><img src="http://zui.sexy/docs/img/img5.jpg" alt=""></div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-lg-6">
-                <div class="card"><img src="http://zui.sexy/docs/img/img5.jpg" alt=""></div>
-            </div>
-        </div>
-    {{--底部banner--}}
-        <div class="items .items-hover">
             <div class="item">
-                <div class="item-content">
-                    <div class="media"><img src="http://zui.sexy/docs/img/slide1.jpg" alt=""></div>
+                <img alt="Second slide" src="http://zui.sexy/docs/img/slide2.jpg">
+                <div class="carousel-caption">
+                    <h3>我是第二张幻灯片</h3>
+                    <p>0.0</p>
+                </div>
+            </div>
+            <div class="item">
+                <img alt="Third slide" src="http://zui.sexy/docs/img/slide3.jpg">
+                <div class="carousel-caption">
+                    <h3>我是第三张幻灯片</h3>
+                    <p>最后一张咯~</p>
                 </div>
             </div>
         </div>
+
+        <!-- 项目切换按钮 -->
+        <a class="left carousel-control" href="#myNiceCarousel" data-slide="prev">
+            <span class="icon icon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#myNiceCarousel" data-slide="next">
+            <span class="icon icon-chevron-right"></span>
+        </a>
+    </div>
+    {{--卡片--}}
+    <div class="cards">
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="card"><img src="http://zui.sexy/docs/img/img5.jpg" alt=""></div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="card"><img src="http://zui.sexy/docs/img/img5.jpg" alt=""></div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="card"><img src="http://zui.sexy/docs/img/img5.jpg" alt=""></div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="card"><img src="http://zui.sexy/docs/img/img5.jpg" alt=""></div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="card"><img src="http://zui.sexy/docs/img/img5.jpg" alt=""></div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="card"><img src="http://zui.sexy/docs/img/img5.jpg" alt=""></div>
+        </div>
+    </div>
+    {{--底部banner--}}
+    <div class="items .items-hover">
+        <div class="item">
+            <div class="item-content">
+                <div class="media"><img src="http://zui.sexy/docs/img/slide1.jpg" alt=""></div>
+            </div>
+        </div>
+    </div>
     <div class="footer">
         <div class="container">
             <div class="row">
@@ -198,17 +181,4 @@
             ga('send', 'pageview');
         </script>
     </div>
-
-
-
-
-
-        <!-- ZUI Javascript 依赖 jQuery -->
-        <script src="//cdn.bootcss.com/zui/1.7.0/lib/jquery/jquery.js"></script>
-        <!-- ZUI 标准版压缩后的 JavaScript 文件 -->
-        <script src="//cdn.bootcss.com/zui/1.7.0/js/zui.min.js"></script>
-        <script>
-
-        </script>
-    </body>
-</html>
+    @stop
