@@ -8,7 +8,9 @@
     <title>OE360</title>
 
     <!-- ZUI 标准版压缩后的 CSS 文件 -->
-    <link rel="stylesheet" href="//cdn.bootcss.com/zui/1.7.0/css/zui.min.css">
+    <link rel="stylesheet" href="{{  public_path('css/materialize.css') }}">
+    {{--这里是 自定义的 样式--}}
+    <link rel="stylesheet" href="{{  public_path('css/app.css') }}">
     <style>
         .footer {
             padding-top: 20px;
@@ -23,7 +25,9 @@
 <!-- ZUI Javascript 依赖 jQuery -->
 <script src="//cdn.bootcss.com/zui/1.7.0/lib/jquery/jquery.js"></script>
 <!-- ZUI 标准版压缩后的 JavaScript 文件 -->
-<script src="//cdn.bootcss.com/zui/1.7.0/js/zui.min.js"></script>
+<script src="{{ public_path('js/materizlize.js') }}"></script>
+    {{--这里写自己的js--}}
+<script src="{{ public_path('js/app.js') }}"></script>
 @yield('js')
 </body>
 </html>
