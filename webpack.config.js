@@ -1,4 +1,5 @@
 var path = require('path');
+// var HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const extractSass = new ExtractTextPlugin({
@@ -9,8 +10,8 @@ const extractSass = new ExtractTextPlugin({
 module.exports = {
     entry: './resources/assets/js/app.js',
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        filename: 'js/app.js',
+        path: path.resolve(__dirname, 'public')
     },
 
     module: {
@@ -26,7 +27,13 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin('style.css')
+        new ExtractTextPlugin('css/app.css')
+        // new HtmlWebpackPlugin({
+        //     title: 'My App',
+        //     template: 'resources/views/layouts/master.blade.php',
+        //     filename: 'resources/views/layouts/admin.html'
+        // })
+
         //if you want to pass in options, you can do so:
         //new ExtractTextPlugin({
         //  filename: 'style.css'
