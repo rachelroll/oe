@@ -5,4 +5,5 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 require('../sass/materialize.scss');
+require('../sass/app.scss');
 require('./jquery-3.2.1.min.js');
