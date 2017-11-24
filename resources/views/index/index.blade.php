@@ -1,7 +1,67 @@
 @extends('layouts.master')
 @section('content')
     <body>
+    <nav class="nav-extended ">
+        <div class="nav-background">
+            <div class="pattern active" style="background-image: url('//cdn.shopify.com/s/files/1/2030/2737/files/icon-seamless_ef568d79-394b-49ab-a3c5-128827d788e8.png?v=1496294246');"></div>
+        </div>
+        <div class="nav-wrapper container">
+            <a href="/" itemprop="url" class="brand-logo site-logo">Gallery</a>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li class="site-nav--active active">
+                    <a href="/" class="site-nav__link">Home</a>
+                </li>
+                <li class="site-nav--has-submenu">
+                    <a href="#" class="site-nav__link dropdown-button" data-activates="features-dropdown" data-belowOrigin="true" data-constrainWidth="false" data-hover="true">Features<i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                    <ul id="features-dropdown" class="site-nav__submenu dropdown-content">
+                        <li>
+                            <a href="/pages/dark-theme" class="site-nav__link">Dark Theme</a>
+                        </li>
+                        <li>
+                            <a href="/collections/dark-theme" class="site-nav__link">Dark Collection</a>
+                        </li>
+                        <li>
+                            <a href="/collections/fillscreen-style" class="site-nav__link">Fillscreen</a>
+                        </li>
+                        <li>
+                            <a href="/collections/horizontal" class="site-nav__link">Horizontal</a>
+                        </li>
+                        <li>
+                            <a href="/collections/all-products" class="site-nav__link">No Header</a>
+                        </li>
+                        <li>
+                            <a href="/pages/contact-us" class="site-nav__link">Contact Us</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/blogs/news" class="site-nav__link">Blog</a>
+                </li>
+                <li><a href="/cart"><i class="material-icons left">shopping_cart</i>Cart</a>
+                </li>
+                <li><a class="fullscreen-search" href="#"><i class="material-icons">search</i></a>
+                </li>
+                <li>
+                    <a href="/account/login" id="customer_login_link">Log in</a>
+                </li>
+                <li>
+                    <a href="/account/register" id="customer_register_link">Create account</a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-header center">
+            <!-- Show Carousel instead of default page titles -->
+            <h1>I make things</h1>
+            <div class="tagline">Online Shop</div>
+        </div>
+    </nav>
         <div class="container">
+
+
+
+
             <nav>
                 <div class="nav-wrapper">
                     <a href="#" class="brand-logo">Logo</a>
