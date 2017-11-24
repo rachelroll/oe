@@ -64,7 +64,7 @@
 
             <nav>
                 <div class="nav-wrapper">
-                    <a href="#" class="brand-logo">Logo</a>
+                    <a href="#" class="brand-logo">OE</a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="sass.html">Sass</a></li>
                         <li><a href="badges.html">Components</a></li>
@@ -105,11 +105,15 @@
                         </div>
                     </div>
                     <div class="col s12 m6">
-                        <div class="icon-block">
-                            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-                            <h5 class="center">User Experience Focused</h5>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="http://materializecss.com/images/sample-1.jpg">
+                                <span class="card-title">Card Title</span>
+                            </div>
 
-                            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+                            <div class="card-action">
+                                <a href="#">This is a link</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -120,11 +124,15 @@
                 <!--   Icon Section   -->
                 <div class="row">
                     <div class="col s12 m6">
-                        <div class="icon-block">
-                            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-                            <h5 class="center">Speeds up development</h5>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="http://materializecss.com/images/sample-1.jpg">
+                                <span class="card-title">Card Title</span>
+                            </div>
 
-                            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+                            <div class="card-action">
+                                <a href="#">This is a link</a>
+                            </div>
                         </div>
                     </div>
 
@@ -181,33 +189,101 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-    <div class="container">
-        <div class="section">
-
             <div class="row">
-                <div class="col s12 center">
-                    <h3><i class="mdi-content-send brown-text"></i></h3>
-                    <h4>Contact Us</h4>
-                    <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="http://materializecss.com/images/sample-1.jpg">
+                            <span class="card-title">Card Title</span>
+                        </div>
+
+                        <div class="card-action">
+                            <a href="#">This is a link</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="http://materializecss.com/images/sample-1.jpg">
+                            <span class="card-title">Card Title</span>
+                        </div>
+
+                        <div class="card-action">
+                            <a href="#">This is a link</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="http://materializecss.com/images/sample-1.jpg">
+                            <span class="card-title">Card Title</span>
+                        </div>
+
+                        <div class="card-action">
+                            <a href="#">This is a link</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-
+            <a class="waves-effect waves-light btn-large">SEE ALL</a>
         </div>
-    </div>
+        <div class="container">
+            <h3>PRODUCT COLLECTION</h3>
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="http://materializecss.com/images/sample-1.jpg">
+                            <span class="card-title">Card Title</span>
+                        </div>
 
+                        <div class="card-action">
+                            <a href="#">This is a link</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="http://materializecss.com/images/sample-1.jpg">
+                            <span class="card-title">Card Title</span>
+                        </div>
 
-    <div class="parallax-container valign-wrapper">
-        <div class="section no-pad-bot">
-            <div class="container">
-                <div class="row center">
-                    <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+                        <div class="card-action">
+                            <a href="#">This is a link</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="http://materializecss.com/images/sample-1.jpg">
+                                <span class="card-title">Card Title</span>
+                            </div>
+
+                            <div class="card-action">
+                                <a href="#">This is a link</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="http://materializecss.com/images/sample-1.jpg">
+                                <span class="card-title">Card Title</span>
+                            </div>
+
+                            <div class="card-action">
+                                <a href="#">This is a link</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="parallax"><img src="background3.jpg" alt="Unsplashed background img 3"></div>
-    </div>
 
     <footer class="page-footer teal">
         <div class="container">
