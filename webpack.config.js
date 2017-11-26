@@ -1,7 +1,6 @@
 var path = require('path');
 // var HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
 const extractSass = new ExtractTextPlugin({
     filename: "[name].[contenthash].css",
     disable: process.env.NODE_ENV === "development"
@@ -17,6 +16,13 @@ module.exports = {
     module: {
         rules: [
             {
+                test: require.resolve('jquery'),
+                use: [{
+                    loader: 'expose-loader',
+                    options: '$'
+                }]
+            },
+            {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
@@ -24,7 +30,17 @@ module.exports = {
                     use: ['css-loader', 'sass-loader']
                 })
             }
+
+
         ]
+    },
+    resolve: {
+        //extensions: ['', '.js', '.es6', '.vue'],
+        alias: {
+            //  也可以不写
+            jquery: './jquery-3.2.1.min.js',
+            materialize: './materialize.min.js'
+        }
     },
     plugins: [
         new ExtractTextPlugin('css/app.css')

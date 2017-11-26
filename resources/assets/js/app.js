@@ -4,6 +4,11 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
 require('../sass/materialize.scss');
+import $ from 'jquery'
+import 'materialize'
 require('../sass/app.scss');
-require('./jquery-3.2.1.min.js');
+// require('./jquery-3.2.1.min.js');
+
+require("expose-loader?$!jquery");
