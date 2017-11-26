@@ -17,7 +17,7 @@
             font-family: 'Material Icons';
             font-style: normal;
             font-weight: 400;
-            src: url('fonts/roboto/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2') format('woff2');
+            src: url('/fonts/roboto/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2') format('woff2');
         }
     </style>
     {{--这里是 自定义的 样式--}}
