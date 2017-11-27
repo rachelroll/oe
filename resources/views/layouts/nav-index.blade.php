@@ -1,5 +1,5 @@
 {{--nav--}}
-
+<header>
 <nav class="nav-extended ">
     {{--nav-background--}}
     <div class="nav-background">
@@ -13,5 +13,5 @@
         <div class="tagline">One Thing</div>
     </div>
 </nav>
-
+</header>
 {{--nav.end--}}
