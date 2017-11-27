@@ -17,4 +17,4 @@ Route::get('/', 'IndexController@index');
 Route::resource('/register', 'RegisterController');
 Route::get('/login', 'RegisterController@login');
 Route::get('/items/{item}', 'ItemController@show');
-
+Route::get('category/{category}', 'CategoryController@show');

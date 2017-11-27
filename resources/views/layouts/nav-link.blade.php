@@ -10,14 +10,14 @@
             <a href="/" class="site-nav__link">主页</a>
         </li>
         <li class="site-nav--has-submenu">
-            <a href="#" class="site-nav__link dropdown-button" data-activates="features-dropdown" data-belowOrigin="true" data-constrainWidth="false" data-hover="true">产品中心<i class="material-icons right">arrow_drop_down</i>
+            <a href="/category/{category}" class="site-nav__link dropdown-button" data-activates="features-dropdown" data-belowOrigin="true" data-constrainWidth="false" data-hover="true">产品中心<i class="material-icons right">arrow_drop_down</i>
             </a>
             <ul id="features-dropdown" class="site-nav__submenu dropdown-content">
                 <li>
-                    <a href="/pages/dark-theme" class="site-nav__link">音响</a>
+                    <a href="/category/{category}" class="site-nav__link">音响</a>
                 </li>
                 <li>
-                    <a href="/collections/dark-theme" class="site-nav__link">耳机</a>
+                    <a href="/category/{category}" class="site-nav__link">耳机</a>
                 </li>
             </ul>
         </li>
