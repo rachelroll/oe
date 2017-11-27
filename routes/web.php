@@ -17,4 +17,11 @@ Route::get('/', 'IndexController@index');
 Route::resource('/register', 'RegisterController');
 Route::get('/login', 'RegisterController@login');
 Route::get('/items/{item}', 'ItemController@show');
+//关于我们
+Route::get('/about', 'AboutController@index');
+//技术支持
+Route::get('/support', 'AboutController@support');
+
+//联系我们
+Route::get('/contact', 'AboutController@contact');
 

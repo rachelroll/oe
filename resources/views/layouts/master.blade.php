@@ -26,7 +26,7 @@
     @yield('style')
 
 </head>
-<body>
+<body>act
     @yield('nav-bar')
     @yield('content')
 

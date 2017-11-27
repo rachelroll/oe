@@ -31,13 +31,13 @@
             </a>
             <ul id="features-dropdown-about" class="site-nav__submenu dropdown-content">
                 <li>
-                    <a href="/pages/dark-theme" class="site-nav__link">技术支持</a>
+                    <a href="{{ url('/about') }}" class="site-nav__link">关于我们</a>
                 </li>
                 <li>
-                    <a href="/pages/dark-theme" class="site-nav__link">关于我们</a>
+                    <a href="{{ url('/support') }}" class="site-nav__link">技术支持</a>
                 </li>
                 <li>
-                    <a href="/collections/dark-theme" class="site-nav__link">联系方式</a>
+                    <a href="{{ url('/contact') }}" class="site-nav__link">联系我们</a>
                 </li>
             </ul>
         </li>
