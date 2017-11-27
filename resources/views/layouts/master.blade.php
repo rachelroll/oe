@@ -26,11 +26,14 @@
     @yield('style')
 
 </head>
-<body>act
+<body>
     @yield('nav-bar')
-    @yield('content')
+    <main>
+        @yield('content')
+    </main>
 
 {{--页脚--}}
+
 <footer class="page-footer teal">
     <div class="container">
         <div class="row">
@@ -54,9 +57,9 @@
             <p>
                 Copyright © 2016 | by 北京欧意智能科技有限公司 京ICP备16048702号-1
             </p>
+
         </div>
-    </div>
-</footer>
+    </footer>
 {{--页脚.end--}}
 
 

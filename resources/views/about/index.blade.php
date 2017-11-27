@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('nav-bar')
-    @include('layouts.nav-fixed')
+    @include('layouts.nav-index')
 @stop
 @section('content')
     <div class="container">
