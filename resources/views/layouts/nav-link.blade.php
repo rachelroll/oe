@@ -14,10 +14,10 @@
             </a>
             <ul id="features-dropdown" class="site-nav__submenu dropdown-content">
                 <li>
-                    <a href="/category/{category}" class="site-nav__link">音响</a>
+                    <a href="/category/1" class="site-nav__link">耳机</a>
                 </li>
                 <li>
-                    <a href="/category/{category}" class="site-nav__link">耳机</a>
+                    <a href="/category/2" class="site-nav__link">音响</a>
                 </li>
             </ul>
         </li>
