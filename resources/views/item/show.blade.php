@@ -5,62 +5,20 @@
 @section('content')
     {{--主图--}}
     <div class="container">
+        @foreach($product->productInfo as $item)
         <div class="row">
             <div class="col m12">
                 <div class="card center"  >
                     <div class="card-image center" style="height: 500px; overflow: hidden">
-                        <img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">
-                        <span class="card-title">Card Title</span>
+                        <img src="/uploads/{{ $item->imgs }}">
                     </div>
-                    <div class="card-content">
-                        <h4>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</h4>
-                    </div>
+                </div>
+                <div class="card-content">
+                    <h4>{{ $item->intro }}</h4>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col m12">
-                <div class="card center"  >
-                    <div class="card-image center" style="height: 500px; overflow: hidden">
-                        <img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">
-                        <span class="card-title">Card Title</span>
-                    </div>
-                    <div class="card-content">
-                        <h4>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col m12">
-                <div class="card center"  >
-                    <div class="card-image center" style="height: 500px; overflow: hidden">
-                        <img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">
-                        <span class="card-title">Card Title</span>
-                    </div>
-                    <div class="card-content">
-                        <h4>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col m12">
-                <div class="card center"  >
-                    <div class="card-image center" style="height: 500px; overflow: hidden">
-                        <img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">
-                        <span class="card-title">Card Title</span>
-                    </div>
-                    <div class="card-content">
-                        <h4>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
     {{--主图.end--}}
 

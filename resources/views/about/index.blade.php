@@ -6,11 +6,11 @@
     <div class="container">
         <div class="row">
             <div class="col m12">
-                @include('about.content')
+                <p>
+                    {{ $about->content }}
+                </p>
             </div>
         </div>
     </div>
-    <p>
 
-    </p>
     @stop

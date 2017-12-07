@@ -2,22 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
 
-    public function index()
+    public function show($id)
     {
-        return view('about.index');
-    }
-
-    public function support()
-    {
-        return view('about.support');
-    }
-    public function contact()
-    {
-        return view('about.contact');
+        $about = About::find($id);
+        return view('about.index', compact('about'));
     }
 }
