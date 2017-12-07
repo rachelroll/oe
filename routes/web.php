@@ -16,13 +16,13 @@
 Route::get('/', 'IndexController@index');
 Route::resource('/register', 'RegisterController');
 Route::get('/login', 'RegisterController@login');
-Route::get('/items/{item}', 'ItemController@show');
-Route::get('category/{category}', 'CategoryController@show');
-//关于我们
-Route::get('/about', 'AboutController@index');
-//技术支持
-Route::get('/support', 'AboutController@support');
-
-//联系我们
-Route::get('/contact', 'AboutController@contact');
+Route::get('/product/{id}', 'ProductController@show');
+Route::get('category/{id}', 'CategoryController@show');
+//关于
+Route::get('/about/{id}', 'AboutController@show');
+////技术支持
+//Route::get('/support', 'AboutController@support');
+//
+////联系我们
+//Route::get('/contact', 'AboutController@contact');
 

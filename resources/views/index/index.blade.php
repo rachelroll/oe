@@ -5,72 +5,62 @@
 @section('content')
     {{--主打产品--}}
         <div class="container">
+
             <div class="section">
                 <!--   Icon Section   -->
+                @if(count($products))
+                @foreach($products->where('type',1)->take(2) as $key=>$product)
                 <div class="row">
+                    @if($key == 0)
                     <div class="col s12 m6">
                         <div class="icon-block gallery-expand">
                             <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-                            <h5 class="center">放主打产品A</h5>
+                            <h5 class="center">{{ $product->name }}</h5>
 
-                            <p class="light">产品简介
-                                We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+                            <p class="light">{{ $product->intro }}</p>
                         </div>
                     </div>
                     <div class="col s12 m6">
                         <a href="#">
                             <div class="card">
                                 <div class="card-image">
-                                    <img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">
-                                    <span class="card-title">Card Title</span>
+                                    <img src="/uploads/{{ $product->cover }}">
+                                    <span class="card-title">{{ $product->name }}</span>
                                 </div>
 
                                 <div class="card-action">
-                                    <a href="#">This is a link</a>
+                                    <a href="#">{{ $product->intro_title }}</a>
                                 </div>
                             </div>
                         </a>
                     </div>
-                </div>
-                <div id="modal1" class="modal modal-fixed-footer">
-                    <div class="modal-content">
-                        <h4>Modal Header</h4>
-                        <p>A bunch of text</p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <!--   Icon Section   -->
-                <div class="row">
+                        @else
                     <div class="col s12 m6">
                         <a href="#">
                             <div class="card">
                                 <div class="card-image">
-                                    <img src="http://ozgti7vh2.bkt.clouddn.com/sample-2.jpg">
-                                    <span class="card-title">Card Title</span>
+                                    <img src="/uploads/{{ $product->cover }}">
+                                    <span class="card-title">{{ $product->name }}</span>
                                 </div>
 
                                 <div class="card-action">
-                                    <a href="#">This is a link</a>
+                                    <a href="#">{{ $product->intro_title }}</a>
                                 </div>
                             </div>
                         </a>
                     </div>
-
                     <div class="col s12 m6">
-                        <div class="icon-block">
-                            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-                            <h5 class="center">放主打产品B</h5>
+                            <div class="icon-block gallery-expand">
+                                <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+                                <h5 class="center">{{ $product->name }}</h5>
 
-                            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-                        </div>
-                    </div>
+                                <p class="light">{{ $product->intro }}</p>
+                            </div>
                 </div>
-
+                    @endif
+                </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     {{--主打产品.end--}}
@@ -84,82 +74,27 @@
             </div>
 
         </div>
+        @if(count($products))
+            @foreach($products->where('type', 2)->take(6)->chunk(3) as $chunk)
         <div class="row">
+            @foreach($chunk as $product)
             <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">
-                        <span class="card-title">Card Title</span>
+                        <img src="/uploads/{{ $product->cover }}">
+                        <span class="card-title">{{ $product->name }}</span>
                     </div>
 
                     <div class="card-action">
-                        <a href="#">This is a link</a>
+                        <a href="#">{{ $product->intro_title }}</a>
                     </div>
                 </div>
             </div>
-            <div class="col s12 m4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">
-                        <span class="card-title">Card Title</span>
-                    </div>
-
-                    <div class="card-action">
-                        <a href="#">This is a link</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">
-                        <span class="card-title">Card Title</span>
-                    </div>
-
-                    <div class="card-action">
-                        <a href="#">This is a link</a>
-                    </div>
-                </div>
-            </div>
+                @endforeach
         </div>
-        <div class="row">
-            <div class="col s12 m4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">
-                        <span class="card-title">Card Title</span>
-                    </div>
+            @endforeach
+        @endif
 
-                    <div class="card-action">
-                        <a href="#">This is a link</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">
-                        <span class="card-title">Card Title</span>
-                    </div>
-
-                    <div class="card-action">
-                        <a href="#">This is a link</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">
-                        <span class="card-title">Card Title</span>
-                    </div>
-
-                    <div class="card-action">
-                        <a href="#">This is a link</a>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col m12 center">
                 <a class="waves-effect waves-light btn-large">SEE ALL</a>
@@ -168,84 +103,84 @@
     </div>
     {{--特色产品.end--}}
     {{--产品系列--}}
-        <div class="container">
+        {{--<div class="container">--}}
 
-            <div class="row">
-                <div class="col m12">
-                    <h3>产品系列</h3>
-                    <p>这里放特色产品的 简介 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eius error fugiat fugit nam officiis perferendis quaerat tempore. Aut blanditiis esse facilis impedit molestiae nam omnis optio quam suscipit tenetur!</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12 m6">
-                    <div class="card">
-                        <a href="#">
-                            <div class="card-image">
-                                <img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">
-                                <span class="card-title">Card Title</span>
-                            </div>
+            {{--<div class="row">--}}
+                {{--<div class="col m12">--}}
+                    {{--<h3>产品系列</h3>--}}
+                    {{--<p>这里放特色产品的 简介 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eius error fugiat fugit nam officiis perferendis quaerat tempore. Aut blanditiis esse facilis impedit molestiae nam omnis optio quam suscipit tenetur!</p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="row">--}}
+                {{--<div class="col s12 m6">--}}
+                    {{--<div class="card">--}}
+                        {{--<a href="#">--}}
+                            {{--<div class="card-image">--}}
+                                {{--<img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">--}}
+                                {{--<span class="card-title">Card Title</span>--}}
+                            {{--</div>--}}
 
-                            <div class="card-action">
-                                <span>This is a Link</span>
+                            {{--<div class="card-action">--}}
+                                {{--<span>This is a Link</span>--}}
                                 {{--<a href="#">This is a link</a>--}}
-                            </div>
-                        </a>
+                            {{--</div>--}}
+                        {{--</a>--}}
 
-                    </div>
-                </div>
-                <div class="col s12 m6">
-                    <div class="card">
-                        <a href="#">
-                            <div class="card-image">
-                                <img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">
-                                <span class="card-title">Card Title</span>
-                            </div>
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="col s12 m6">--}}
+                    {{--<div class="card">--}}
+                        {{--<a href="#">--}}
+                            {{--<div class="card-image">--}}
+                                {{--<img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">--}}
+                                {{--<span class="card-title">Card Title</span>--}}
+                            {{--</div>--}}
 
-                            <div class="card-action">
-                                <span>This is a Link</span>
+                            {{--<div class="card-action">--}}
+                                {{--<span>This is a Link</span>--}}
                                 {{--<a href="#">This is a link</a>--}}
-                            </div>
-                        </a>
+                            {{--</div>--}}
+                        {{--</a>--}}
 
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12 m6">
-                    <div class="card">
-                        <a href="#">
-                            <div class="card-image">
-                                <img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">
-                                <span class="card-title">Card Title</span>
-                            </div>
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="row">--}}
+                {{--<div class="col s12 m6">--}}
+                    {{--<div class="card">--}}
+                        {{--<a href="#">--}}
+                            {{--<div class="card-image">--}}
+                                {{--<img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">--}}
+                                {{--<span class="card-title">Card Title</span>--}}
+                            {{--</div>--}}
 
-                            <div class="card-action">
-                                <span>This is a Link</span>
+                            {{--<div class="card-action">--}}
+                                {{--<span>This is a Link</span>--}}
                                 {{--<a href="#">This is a link</a>--}}
-                            </div>
-                        </a>
+                            {{--</div>--}}
+                        {{--</a>--}}
 
-                    </div>
-                </div>
-                <div class="col s12 m6">
-                    <div class="card">
-                        <a href="#">
-                            <div class="card-image">
-                                <img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">
-                                <span class="card-title">Card Title</span>
-                            </div>
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="col s12 m6">--}}
+                    {{--<div class="card">--}}
+                        {{--<a href="#">--}}
+                            {{--<div class="card-image">--}}
+                                {{--<img src="http://ozgti7vh2.bkt.clouddn.com/sample-1.jpg">--}}
+                                {{--<span class="card-title">Card Title</span>--}}
+                            {{--</div>--}}
 
-                            <div class="card-action">
-                                <span>This is a Link</span>
+                            {{--<div class="card-action">--}}
+                                {{--<span>This is a Link</span>--}}
                                 {{--<a href="#">This is a link</a>--}}
-                            </div>
-                        </a>
+                            {{--</div>--}}
+                        {{--</a>--}}
 
-                    </div>
-                </div>
-            </div>
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
 
-        </div>
+        {{--</div>--}}
     {{--产品系列.end--}}
     @section('js')
         <script>
