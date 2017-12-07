@@ -12,14 +12,15 @@
         <li class="site-nav--has-submenu">
             <a href="/category/{category}" class="site-nav__link dropdown-button" data-activates="features-dropdown" data-belowOrigin="true" data-constrainWidth="false" data-hover="true">产品中心<i class="material-icons right">arrow_drop_down</i>
             </a>
+            @if($categories)
             <ul id="features-dropdown" class="site-nav__submenu dropdown-content">
+                @foreach($categories as $category)
                 <li>
-                    <a href="/category/1" class="site-nav__link">耳机</a>
+                    <a href="/category/{{$category->id}}" class="site-nav__link">{{$category->name}}</a>
                 </li>
-                <li>
-                    <a href="/category/2" class="site-nav__link">音响</a>
-                </li>
+                @endforeach
             </ul>
+                @endif
         </li>
         <li>
             <a href="/blogs/news" class="site-nav__link">最新动态</a>
