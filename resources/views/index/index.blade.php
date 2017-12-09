@@ -12,19 +12,18 @@
                 @foreach($products->where('type',1)->take(2) as $key=>$product)
                 <div class="row">
                     @if($key == 0)
-                    <div class="col s12 m6">
+                    <div class="col s12 m6 ">
                         <div class="icon-block gallery-expand">
                             <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-                            <h5 class="center">{{ $product->name }}</h5>
-
-                            <p class="light">{{ $product->intro }}</p>
+                            <h5 class="center">{{ $product->name}}</h5>
+                            <p class="light">{{ $product->intro_title }}</p>
                         </div>
                     </div>
-                    <div class="col s12 m6">
-                        <a href="#">
+                    <div class="col s12 m6 ">
+                        <a href="{{ route('product.show',['id'=>$product->id]) }}">
                             <div class="card">
                                 <div class="card-image">
-                                    <img src="/uploads/{{ $product->cover }}">
+                                    <img src="//{{ env('QINIU_HOST') . $product->cover }}">
                                     <span class="card-title">{{ $product->name }}</span>
                                 </div>
 
@@ -34,12 +33,12 @@
                             </div>
                         </a>
                     </div>
-                        @else
+                    @else
                     <div class="col s12 m6">
-                        <a href="#">
+                        <a href="{{ route('product.show',['id'=>$product->id]) }}">
                             <div class="card">
                                 <div class="card-image">
-                                    <img src="/uploads/{{ $product->cover }}">
+                                    <img src="//{{ env('QINIU_HOST') . $product->cover }}">
                                     <span class="card-title">{{ $product->name }}</span>
                                 </div>
 
@@ -70,7 +69,7 @@
         <div class="row">
             <div class="col m12">
                 <h3>特色产品</h3>
-                <p>这里放特色产品的 简介 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eius error fugiat fugit nam officiis perferendis quaerat tempore. Aut blanditiis esse facilis impedit molestiae nam omnis optio quam suscipit tenetur!</p>
+                {{--<p>这里放特色产品的 简介 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eius error fugiat fugit nam officiis perferendis quaerat tempore. Aut blanditiis esse facilis impedit molestiae nam omnis optio quam suscipit tenetur!</p>--}}
             </div>
 
         </div>

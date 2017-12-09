@@ -22,18 +22,21 @@
             </ul>
                 @endif
         </li>
-        <li>
-            <a href="/blogs/news" class="site-nav__link">最新动态</a>
-        </li>
+        {{--<li>--}}
+            {{--<a href="/blogs/news" class="site-nav__link">最新动态</a>--}}
+        {{--</li>--}}
         {{--<li><a href="/cart"><i class="material-icons left">shopping_cart</i>购物车</a>--}}
         {{--</li>--}}
         <li class="site-nav--has-submenu">
             <a href="#" class="site-nav__link dropdown-button" data-activates="features-dropdown-about" data-belowOrigin="true" data-constrainWidth="false" data-hover="true">关于<i class="material-icons right">arrow_drop_down</i>
             </a>
+            @if($about)
             <ul id="features-dropdown-about" class="site-nav__submenu dropdown-content">
+                @foreach($about as $ab)
                 <li>
                     <a href="{{ url('/about/1') }}" class="site-nav__link">关于我们</a>
                 </li>
+                @endforeach
                 <li>
                     <a href="{{ url('/about/2') }}" class="site-nav__link">技术支持</a>
                 </li>
@@ -41,6 +44,7 @@
                     <a href="{{ url('/about/3') }}" class="site-nav__link">联系我们</a>
                 </li>
             </ul>
+                @endif
         </li>
         {{--<li><a class="fullscreen-search" href="#"><i class="material-icons">search</i></a>--}}
         {{--</li>--}}

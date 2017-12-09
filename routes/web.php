@@ -16,10 +16,10 @@
 Route::get('/', 'IndexController@index');
 Route::resource('/register', 'RegisterController');
 Route::get('/login', 'RegisterController@login');
-Route::get('/product/{id}', 'ProductController@show');
+Route::get('/product/{id}', 'ProductController@show')->name('product.show');
 Route::get('category/{id}', 'CategoryController@show');
 //关于
-Route::get('/about/{id}', 'AboutController@show');
+Route::get('/about/{id}', 'AboutController@show')->;
 ////技术支持
 //Route::get('/support', 'AboutController@support');
 //
