@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $categories = Category::where('enabled',1)->get();
-        $about = About::all();
+        $about = About::limit(6)->get();
         View::share('categories', $categories);
         View::share('about', $about);
     }

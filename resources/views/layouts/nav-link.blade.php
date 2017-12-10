@@ -32,17 +32,11 @@
             </a>
             @if($about)
             <ul id="features-dropdown-about" class="site-nav__submenu dropdown-content">
-                @foreach($about as $ab)
+                @foreach($about as $about)
                 <li>
-                    <a href="{{ url('/about/1') }}" class="site-nav__link">关于我们</a>
+                    <a href="{{ url('/about') . $about->id }}" class="site-nav__link">{{ $about->title }}</a>
                 </li>
                 @endforeach
-                <li>
-                    <a href="{{ url('/about/2') }}" class="site-nav__link">技术支持</a>
-                </li>
-                <li>
-                    <a href="{{ url('/about/3') }}" class="site-nav__link">联系我们</a>
-                </li>
             </ul>
                 @endif
         </li>

@@ -43,13 +43,17 @@
                     Original & Elegant 与 OE PLAY 隶属于北京欧意智能科技有限公司。为在亚太地区扩大投资规模和加强不同公司之间的业务关系，同时提高品牌影响力，Original & Elegant 集团决定将同中海资产管理公司共同合资成立了北京欧意智能科技有限公司,并升级至亚太区总部。</p>
             </div>
             <div class="col l4 offset-l2 s12">
+                @if($about)
                 <h5 class="white-text">友情链接</h5>
+
                 <ul>
-                    <li><a class="grey-text text-lighten-3" href="{{ url('/about/1') }}">关于我们</a></li>
-                    <li><a class="grey-text text-lighten-3" href="{{ url('/about/2') }}">技术支持</a></li>
-                    <li><a class="grey-text text-lighten-3" href="{{ url('/about/3') }}">联系我们</a></li>
+                    @foreach($about  as $about)
+                    <li><a class="grey-text text-lighten-3" href="{{ url('/about/') . $about->id }}">{{ $about->title }}</a></li>
+                    @endforeach
                 </ul>
+                @endif
             </div>
+
         </div>
     </div>
     <div class="footer-copyright">
@@ -59,7 +63,8 @@
             </p>
 
         </div>
-    </footer>
+    </div>
+</footer>
 {{--页脚.end--}}
 
 
