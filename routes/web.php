@@ -17,6 +17,7 @@ Route::get('/', 'IndexController@index');
 Route::resource('/register', 'RegisterController');
 Route::get('/login', 'RegisterController@login');
 Route::get('/product/{id}', 'ProductController@show')->name('product.show');
+Route::get('/product', 'ProductController@index')->name('product.index');
 Route::get('category/{id}', 'CategoryController@show')->name('category.show');
 
 //关于

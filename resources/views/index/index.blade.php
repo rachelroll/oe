@@ -96,7 +96,7 @@
 
         <div class="row">
             <div class="col m12 center">
-                <a href="" class="waves-effect waves-light btn-large">查看所有产品</a>
+                <a href="/product" class="waves-effect waves-light btn-large">查看所有产品</a>
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@
             <a href="/" class="site-nav__link">主页</a>
         </li>
         <li class="site-nav--has-submenu">
-            <a href="/category/{category}" class="site-nav__link dropdown-button" data-activates="features-dropdown" data-belowOrigin="true" data-constrainWidth="false" data-hover="true">产品中心<i class="material-icons right">arrow_drop_down</i>
+            <a href="/product" class="site-nav__link dropdown-button" data-activates="features-dropdown" data-belowOrigin="true" data-constrainWidth="false" data-hover="true">产品中心<i class="material-icons right">arrow_drop_down</i>
             </a>
             @if($categories_link)
             <ul id="features-dropdown" class="site-nav__submenu dropdown-content">
