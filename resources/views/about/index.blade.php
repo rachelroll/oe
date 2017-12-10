@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col m12">
                 <p>
-                    {{ $about->content }}
+                    {!! $about->content !!}
                 </p>
             </div>
         </div>

@@ -16,10 +16,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $categories = Category::where('enabled',1)->get();
-        $about = About::limit(6)->get();
-        View::share('categories', $categories);
-        View::share('about', $about);
+        $categories_link = Category::where('enabled',1)->get();
+        $about_link = About::limit(6)->get();
+
+        View::share('categories_link', $categories_link);
+        View::share('about_link', $about_link);
     }
 
     /**

@@ -21,7 +21,7 @@
                 <a href="/product/{{ $product->id }}">
                 <div class="card">
                     <div class="card-image">
-                        <img src="/uploads/{{ $product->cover }}">
+                        <img src="//{{ env('QINIU_HOST') . $product->cover }}">
                         <span class="card-title">{{ $product->name }}</span>
                     </div>
                     <div class="card-content">
