@@ -40,6 +40,7 @@
     chmod -R ug+rwx {{ $shared_dir }}/storage
     echo "Storage directory set up"
     cp {{ $release }}/.env.example {{ $shared_dir }}/.env
+    php {{$release_dir}}/{{$release}}/artisan key:generate
     echo "Environment file set up"
     rm -rf {{ $release }}
     echo "Deployment path initialised. Run 'envoy run deploy' now."
@@ -68,7 +69,7 @@
 @task('git_pull',['on'=>'web','confirm' => true])
 
     echo 'Your branch is ' {{ $branch }}
-    cd {{ $app_dir }}/current
+    cd {{ $current_dir }}
     pwd
     git pull origin {{ $branch }}
     git submodule foreach git pull origin {{ $branch }}
@@ -120,7 +121,10 @@
 @endtask
 
 @task('update_permissions')
-    chmod -R ug+rwx {{ $shared_dir }}/storage
+    echo chmod -R ug+rwx {{ $shared_dir }}/storage
+    chmod -R ugo+rwx {{ $shared_dir }}/storage
+    echo "update_permissions"
+
 @endtask
 
 @task('cleanup')

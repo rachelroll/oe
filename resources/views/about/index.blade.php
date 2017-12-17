@@ -4,7 +4,6 @@
 @stop
 @section('content')
     <div class="container">
-        @endif
         <div class="row">
             <div class="col m12">
                 <p>
@@ -13,5 +12,4 @@
             </div>
         </div>
     </div>
-
-    @stop
+@stop
