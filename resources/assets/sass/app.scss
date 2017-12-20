@@ -72,6 +72,21 @@ nav {
       margin: 10px 0 0 0;
     }
   }
+}
+
+.section .card {
+  position: relative;
+  .card-reveal {
+    display: block;
+    background-color: #fff;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    opacity: 0;
+  }
+  .card-link {
+    margin-top: 10%;
+  }
 
 }
 

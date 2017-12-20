@@ -10,10 +10,11 @@
             </div>
         </div>
         @if(count($product))
-            @foreach($product->chunk(3) as $chunk)
-                <div class="row">
+            <div class="row">
+            @foreach($product->chunk(4) as $key=>$chunk)
+
                     @foreach($chunk as $product)
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <a href="/product/{{ $product->id }}">
                                 <div class="card">
                                     <div class="card-image">
@@ -27,8 +28,9 @@
                             </a>
                         </div>
                     @endforeach
-                </div>
+
             @endforeach
+            </div>
         @endif
     </div>
 

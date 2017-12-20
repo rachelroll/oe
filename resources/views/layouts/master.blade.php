@@ -69,6 +69,7 @@
 
 
     {{--这里写自己的js--}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
 <script src="/js/app.js"></script>
     {{--<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>--}}
 @yield('js')

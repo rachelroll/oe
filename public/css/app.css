@@ -3164,15 +3164,15 @@ nav {
     position: relative;
     height: 100%; }
   @media only screen and (min-width: 993px) {
-    nav a.button-collapse {
+    nav a.sidenav-trigger {
       display: none; } }
-  nav .button-collapse {
+  nav .sidenav-trigger {
     float: left;
     position: relative;
     z-index: 1;
     height: 56px;
     margin: 0 18px; }
-    nav .button-collapse i {
+    nav .sidenav-trigger i {
       height: 56px;
       line-height: 56px; }
   nav .brand-logo {
@@ -3266,7 +3266,7 @@ nav {
 @media only screen and (min-width: 601px) {
   nav.nav-extended .nav-wrapper {
     min-height: 64px; }
-  nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+  nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
     height: 64px;
     line-height: 64px; }
   .navbar-fixed {
@@ -3760,7 +3760,7 @@ small {
   background-color: #26a69a;
   text-align: center;
   letter-spacing: .5px;
-  transition: .2s ease-out;
+  transition: background-color .2s ease-out;
   cursor: pointer; }
   .btn:hover, .btn-large:hover {
     background-color: #2bbbad; }
@@ -3777,7 +3777,7 @@ small {
   padding: 0;
   background-color: #26a69a;
   border-radius: 50%;
-  transition: .3s;
+  transition: background-color .3s;
   cursor: pointer;
   vertical-align: middle; }
   .btn-floating:hover {
@@ -3936,6 +3936,8 @@ button.btn-floating {
   position: absolute;
   z-index: 999;
   transform-origin: 0 0; }
+  .dropdown-content:focus {
+    outline: 0; }
   .dropdown-content li {
     clear: both;
     color: rgba(0, 0, 0, 0.87);
@@ -4742,16 +4744,17 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
     width: calc(100% - 4rem);
     border: 0;
     box-shadow: none; }
-  .input-field input[type=search]:focus {
+  .input-field input[type=search]:focus:not(.browser-default) {
     background-color: #fff;
     border: 0;
     box-shadow: none;
     color: #444; }
-    .input-field input[type=search]:focus + label i,
-    .input-field input[type=search]:focus ~ .mdi-navigation-close,
-    .input-field input[type=search]:focus ~ .material-icons {
+    .input-field input[type=search]:focus:not(.browser-default) + label i,
+    .input-field input[type=search]:focus:not(.browser-default) ~ .mdi-navigation-close,
+    .input-field input[type=search]:focus:not(.browser-default) ~ .material-icons {
       color: #444; }
-  .input-field input[type=search] + label {
+  .input-field input[type=search] + .label-icon {
+    transform: none;
     left: 1rem; }
   .input-field input[type=search] ~ .mdi-navigation-close,
   .input-field input[type=search] ~ .material-icons {
@@ -4769,13 +4772,15 @@ textarea {
   height: 3rem;
   background-color: transparent; }
   textarea.materialize-textarea {
+    line-height: normal;
     overflow-y: hidden;
     /* prevents scroll bar flash */
-    padding: .8rem 0 1.6rem 0;
+    padding: .8rem 0 .8rem 0;
     /* prevents text jump on Enter keypress */
     resize: none;
     min-height: 3rem;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    transition: none; }
 
 .hiddendiv {
   visibility: hidden;
@@ -5186,16 +5191,13 @@ select {
     .select-wrapper input.select-dropdown:focus {
       border-bottom: 1px solid #26a69a; }
   .select-wrapper .caret {
-    color: initial;
     position: absolute;
     right: 0;
     top: 0;
     bottom: 0;
-    height: 24px;
     margin: auto 0;
-    font-size: 24px;
-    line-height: 24px;
-    z-index: -1; }
+    z-index: -1;
+    fill: rgba(0, 0, 0, 0.87); }
   .select-wrapper + label {
     position: absolute;
     top: -26px;
@@ -5204,9 +5206,11 @@ select {
 select:disabled {
   color: rgba(0, 0, 0, 0.42); }
 
-.select-wrapper.disabled span.caret,
 .select-wrapper.disabled + label {
   color: rgba(0, 0, 0, 0.42); }
+
+.select-wrapper.disabled .caret {
+  fill: rgba(0, 0, 0, 0.42); }
 
 .select-wrapper input.select-dropdown:disabled {
   color: rgba(0, 0, 0, 0.42);
@@ -5352,7 +5356,7 @@ input[type=range]::-webkit-slider-thumb {
   transform-origin: 50% 50%;
   margin: -5px 0 0 0; }
 
-input[type=range]:focus:not(.active)::-webkit-slider-thumb {
+input[type=range].focused:focus:not(.active)::-webkit-slider-thumb {
   box-shadow: 0 0 0 10px rgba(38, 166, 154, 0.26); }
 
 input[type=range] {
@@ -5381,7 +5385,7 @@ input[type=range]:-moz-focusring {
   outline: 1px solid #fff;
   outline-offset: -1px; }
 
-input[type=range]:focus:not(.active)::-moz-range-thumb {
+input[type=range].focused:focus:not(.active)::-moz-range-thumb {
   box-shadow: 0 0 0 10px rgba(38, 166, 154, 0.26); }
 
 input[type=range]::-ms-track {
@@ -5406,7 +5410,7 @@ input[type=range]::-ms-thumb {
   background: #26a69a;
   transition: box-shadow .3s; }
 
-input[type=range]:focus:not(.active)::-ms-thumb {
+input[type=range].focused:focus:not(.active)::-ms-thumb {
   box-shadow: 0 0 0 10px rgba(38, 166, 154, 0.26); }
 
 /***************
@@ -6112,7 +6116,7 @@ input[type=range]:focus:not(.active)::-ms-thumb {
   .tap-target-wrapper.open .tap-target-wave::after {
     visibility: visible;
     animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-    transition: opacity .3s, transform .3s, visibility 0s 1s; }
+    transition: opacity .3s, transform .3s, visibility 0s 1s; }
 
 .tap-target {
   position: absolute;
@@ -6147,7 +6151,7 @@ input[type=range]:focus:not(.active)::-ms-thumb {
     transition: transform .3s; }
   .tap-target-wave::after {
     visibility: hidden;
-    transition: opacity .3s, transform .3s, visibility 0s;
+    transition: opacity .3s, transform .3s, visibility 0s;
     z-index: -1; }
 
 .tap-target-origin {
@@ -6165,7 +6169,7 @@ input[type=range]:focus:not(.active)::-ms-thumb {
     height: 600px; } }
 
 .pulse {
-  overflow: initial;
+  overflow: visible;
   position: relative; }
   .pulse::before {
     content: '';
@@ -6195,7 +6199,8 @@ input[type=range]:focus:not(.active)::-ms-thumb {
 /* Modal */
 .datepicker-modal {
   max-width: 325px;
-  min-width: 300px; }
+  min-width: 300px;
+  max-height: none; }
 
 .datepicker-container.modal-content {
   display: flex;
@@ -6259,17 +6264,19 @@ input[type=range]:focus:not(.active)::-ms-thumb {
   .datepicker-table th {
     padding: 10px 5px;
     text-align: center; }
+  .datepicker-table tr {
+    border: none; }
   .datepicker-table abbr {
     text-decoration: none;
     color: #999; }
   .datepicker-table td {
     border-radius: 50%;
     padding: 0; }
+    .datepicker-table td.is-today {
+      color: #26a69a; }
     .datepicker-table td.is-selected {
       background-color: #26a69a;
       color: #fff; }
-    .datepicker-table td.is-today {
-      color: #26a69a; }
     .datepicker-table td.is-outside-current-month, .datepicker-table td.is-disabled {
       color: rgba(0, 0, 0, 0.3);
       pointer-events: none; }
@@ -6281,6 +6288,7 @@ input[type=range]:focus:not(.active)::-ms-thumb {
   display: block;
   width: 100%;
   border-radius: 50%;
+  padding: 0 5px;
   cursor: pointer;
   color: inherit; }
   .datepicker-day-button:focus {
@@ -6318,7 +6326,8 @@ input[type=range]:focus:not(.active)::-ms-thumb {
 
 /* Timepicker Containers */
 .timepicker-modal {
-  max-width: 325px; }
+  max-width: 325px;
+  max-height: none; }
 
 .timepicker-container.modal-content {
   display: flex;
@@ -6525,3 +6534,15 @@ nav {
   nav .nav-wrapper .brand-logo img {
     height: 50px;
     margin: 10px 0 0 0; }
+
+.section .card {
+  position: relative; }
+  .section .card .card-reveal {
+    display: block;
+    background-color: #fff;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    opacity: 0; }
+  .section .card .card-link {
+    margin-top: 10%; }

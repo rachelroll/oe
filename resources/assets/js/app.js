@@ -9,6 +9,6 @@ require('../sass/materialize.scss');
 import $ from 'jquery'
 import 'materialize'
 require('../sass/app.scss');
-// require('./jquery-3.2.1.min.js');
 
 require("expose-loader?$!jquery");
+
