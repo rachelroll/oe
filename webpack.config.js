@@ -23,13 +23,18 @@ module.exports = {
                 }]
             },
             {
-                test: /\.scss$/,
+                test: /\.(scss|sass|css)$/i,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     //resolve-url-loader may be chained before sass-loader if necessary
                     use: ['css-loader', 'sass-loader']
                 })
+            },
+            {
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                loader: 'url-loader?limit=100000'
             }
+
 
 
         ]
@@ -39,7 +44,8 @@ module.exports = {
         alias: {
             //  也可以不写
             jquery: './jquery-3.2.1.min.js',
-            materialize: './materialize.min.js'
+            materialize: './materialize.min.js',
+            semantic: './semantic.min.js'
         }
     },
     plugins: [

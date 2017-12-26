@@ -5,10 +5,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('../sass/materialize.scss');
-import $ from 'jquery'
-import 'materialize'
 require('../sass/app.scss');
-
+import $ from 'jquery'
+import 'semantic'
 require("expose-loader?$!jquery");
 

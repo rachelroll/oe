@@ -27,6 +27,8 @@
         "webpack": "^3.8.1"
     },
     "dependencies": {
-        "expose-loader": "^0.7.4"
+        "expose-loader": "^0.7.4",
+        "file-loader": "^1.1.6",
+        "url-loader": "^0.6.2"
     }
 }

@@ -4,3 +4,6 @@
 [submodule "database"]
 	path = database
 	url = https://github.com/rachelroll/oe-database.git
+[submodule "oehtml"]
+	path = oehtml
+	url = git@github.com:rachelli67890/oehtml.git
