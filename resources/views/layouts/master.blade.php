@@ -1,72 +1,147 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/semantic.css">
-    <title>OE360</title>
-    <style>
-        /* fallback */
-        @font-face {
-            font-family: 'Material Icons';
-            font-style: normal;
-            font-weight: 400;
-            src: url('/fonts/roboto/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2') format('woff2');
-        }
-    </style>
-    {{--这里是 自定义的 样式--}}
-    <link rel="stylesheet" href="/css/app.css">
-    <!-- Material Icons -->
+    <link rel="stylesheet" href="css/app.css">
+    <!--[if lt IE 9]><script src = "//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script><![endif]-->
+
     @yield('style')
 
+    <script src="js/app.js"></script>
+    <script src="js/swiper.min.js"></script>
+
+    <title>主页</title>
+
+    {{--<script>--}}
+        {{--$(function() {--}}
+            {{--$('.ui.sidebar').sidebar('attach events', '.toc.item');--}}
+        {{--});--}}
+    {{--</script>--}}
 </head>
 <body>
-    @yield('nav-bar')
+    <section id="ross_menu">
+    <div class="ui vertical inverted sidebar icon labeled menu">
+        <a class="active item">Home</a>
+        <a class="item">Work23234234</a>
+        <a class="item">Company</a>
+        <a class="item">Careers</a>
+        <a class="item">Login</a>
+        <a class="item">Signup</a>
+    </div>
+
+    <div class="ui fixed inverted  menu">
+        <div class="ui container">
+            <a class="toc item">
+                <i class="sidebar icon"></i>
+            </a>
+            <a class="item">
+                <i class="home icon"></i> 主页
+            </a>
+            <div class="ui simple dropdown item">
+                产品中心
+                <i class="dropdown icon"></i>
+                @if($categories_links)
+                <div class="menu  dropdown-content">
+                    <div class="ui container">
+                        @foreach($categories_links as $categories_link)
+                        <div class="ui simple dropdown item dropdown2">
+                            {{$categories_link->name}}
+                            @if(count($categories_link->product))
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <div class="ui container">
+                                    @foreach($categories_link->product as $product)
+                                    <a class="item" href="{{ route('product.show',['id'=>$product->id]) }}">
+                                        {{ $product->name }}
+                                    </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                            @endif
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                @endif
+            </div>
+            <div class="ui simple dropdown item">
+                <i class="grid layout icon"></i>
+                关于
+                <i class="dropdown icon"></i>
+                @if($about_links)
+                <div class="menu ">
+                    <div class="ui container">
+                        @foreach($about_links as $about_link)
+                        <a class="item" href="{{ route('about.show',['id'=>$about_link->id]) }}">
+                            <i class="home icon"></i> {{ $about_link->title }}
+                        </a>
+                        @endforeach
+                    </div>
+                </div>
+                    @endif
+            </div>
+            <a class="item">
+                <i class="grid layout icon"></i> 其他
+            </a>
+            <div class="right item">
+                <div class="ui input"><input type="text" placeholder="搜索..."></div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <main>
         @yield('content')
     </main>
 
 {{--页脚--}}
-
-<footer class="page-footer teal">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">关于 OE</h5>
-                <p class="grey-text text-lighten-4">
-                    Original & Elegant 与 OE PLAY 隶属于北京欧意智能科技有限公司。为在亚太地区扩大投资规模和加强不同公司之间的业务关系，同时提高品牌影响力，Original & Elegant 集团决定将同中海资产管理公司共同合资成立了北京欧意智能科技有限公司,并升级至亚太区总部。</p>
+    <div class=" wow ui inverted vertical footer segment">
+        <div class="ui center aligned container">
+            <div class="ui stackable inverted divided grid">
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Group 1</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">Link One</a>
+                        <a href="#" class="item">Link Two</a>
+                        <a href="#" class="item">Link Three</a>
+                        <a href="#" class="item">Link Four</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Group 2</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">Link One</a>
+                        <a href="#" class="item">Link Two</a>
+                        <a href="#" class="item">Link Three</a>
+                        <a href="#" class="item">Link Four</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Group 3</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">Link One</a>
+                        <a href="#" class="item">Link Two</a>
+                        <a href="#" class="item">Link Three</a>
+                        <a href="#" class="item">Link Four</a>
+                    </div>
+                </div>
+                <div class="seven wide column">
+                    <h4 class="ui inverted header">Footer Header</h4>
+                    <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+                </div>
             </div>
-            <div class="col l4 offset-l2 s12">
-                @if($about_link)
-                <h5 class="white-text">友情链接</h5>
-
-                <ul>
-                    @foreach($about_link  as $about)
-                    <li><a class="grey-text text-lighten-3" href="{{ url('/about/') . $about->id }}">{{ $about->title }}</a></li>
-                    @endforeach
-                </ul>
-                @endif
+            <div class="ui inverted section divider"></div>
+            <div class="ui horizontal inverted small divided link list">
+                <a class="item" href="#">Copyright © 2016 | by 北京欧意智能科技有限公司 京ICP备16048702号-1</a>
             </div>
-
         </div>
     </div>
-    <div class="footer-copyright">
-        <div class="container">
-            <p>
-                Copyright © 2016 | by 北京欧意智能科技有限公司 京ICP备16048702号-1
-            </p>
-
-        </div>
-    </div>
-</footer>
 {{--页脚.end--}}
 
-
-    {{--这里写自己的js--}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
-<script src="/js/app.js"></script>
-    {{--<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>--}}
 @yield('js')
 </body>
 </html>

@@ -16,11 +16,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $categories_link = Category::where('enabled',1)->get();
-        $about_link = About::limit(6)->get();
+        $categories_links = Category::with(['product'=>function($query) {
+            $query->where('enabled',1)->orderBy('sort','ASC');
+        }])->where('enabled',1)->orderBy('sort','ASC')->limit(7)->get();
+        $about_links = About::limit(6)->get();
 
-        View::share('categories_link', $categories_link);
-        View::share('about_link', $about_link);
+        View::share('categories_links', $categories_links);
+        View::share('about_links', $about_links);
     }
 
     /**
