@@ -5,16 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/semantic.css">
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="/css/semantic.css">
+    <link rel="stylesheet" href="/css/app.css">
     <!--[if lt IE 9]><script src = "//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script><![endif]-->
 
     @yield('style')
 
-    <script src="js/app.js"></script>
-    <script src="js/swiper.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/swiper.min.js"></script>
 
-    <title>主页</title>
+    <title>OE360</title>
 
     {{--<script>--}}
         {{--$(function() {--}}
@@ -38,7 +38,7 @@
             <a class="toc item">
                 <i class="sidebar icon"></i>
             </a>
-            <a class="item">
+            <a href="{{ url('/') }}" class="item">
                 <i class="home icon"></i> 主页
             </a>
             <div class="ui simple dropdown item">

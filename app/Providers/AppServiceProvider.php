@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\About;
+use App\Models\Carousel;
 use App\Models\Category;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -20,9 +21,11 @@ class AppServiceProvider extends ServiceProvider
             $query->where('enabled',1)->orderBy('sort','ASC');
         }])->where('enabled',1)->orderBy('sort','ASC')->limit(7)->get();
         $about_links = About::limit(6)->get();
+        $carousels = Carousel::where('enabled',1)->orderBy('sort','ASC')->get();
 
         View::share('categories_links', $categories_links);
         View::share('about_links', $about_links);
+        View::share('carousels', $carousels);
     }
 
     /**

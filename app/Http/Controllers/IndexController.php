@@ -14,8 +14,8 @@ class IndexController extends Controller
 
         $products = Product::where('enabled',1)->orderBy('sort','ASC')->get();
         //轮播图
-        $carousels = Carousel::where('enabled',1)->orderBy('sort','ASC')->get();
+
         $categories = Category::where('enabled',1)->orderBy('sort','ASC')->limit(4)->get();
-        return view('index.index', compact('products','carousels','categories'));
+        return view('index.index', compact('products','categories'));
     }
 }
