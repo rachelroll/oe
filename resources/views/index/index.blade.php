@@ -81,7 +81,7 @@
 <!--segment-->
 <section class="wow" style="background-color: #999; padding: 1em 0em; margin: 40px 0;">
     <div class="ui container inverted center aligned red column">
-        <h3 style="color: white">The resume is broken. Humans are not. Hire more humanely.</h3>
+        <h3 style="color: white"></h3>
     </div>
 </section>
 <!--segment.end-->
