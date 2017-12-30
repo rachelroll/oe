@@ -6,7 +6,7 @@
     </div>
     @elseif($product->video_mp4)
     <!-- Swiper,产品专用swiper -->
-    <section class="vide">
+    <section class="vide" style="margin-top: 44px;">
         <div id="block2" style="width: 100%; height: 500px;"
              data-vide-bg="mp4: //{{ env('QINIU_HOST') . $product->video_mp4 }}, webm: //{{ env('QINIU_HOST') . $product->video_webm }}, ogv: //{{ env('QINIU_HOST') . $product->video_ogv }}, poster: //{{ env('QINIU_HOST') . $product->video_img }}"
              data-vide-options="position: 0% 50%">

@@ -137,9 +137,9 @@
     @endif
     <!--position2.end-->
     <!--position3-->
-    @if(count($products->take(8)))
+    @if(count($products->where('position',0)))
         <div class="ui container stackable four cards">
-            @foreach($products->where('position',1)->take(4) as $product)
+            @foreach($products->where('position',0)->take(16) as $product)
                 <div class="card">
                     <div class="blurring dimmable image">
                         <div class="ui inverted dimmer">
