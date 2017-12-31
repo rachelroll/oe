@@ -34,11 +34,12 @@
     @if(count($products->where('position',1)))
     <div class="ui container three cards link stackable">
         @foreach($products->where('position',1)->take(4) as $product)
-            <a href="{{ route('product.show',['id'=>$product->id]) }}">
                 <div class="card">
+                    <a href="{{ route('product.show',['id'=>$product->id]) }}">
                     <div class="image">
                         <img src="//{{ env('QINIU_HOST').$product->cover }}">
                     </div>
+                    </a>
                     <div class="content">
                         <div class="header">{{ $product->name }}</div>
                         <div class="meta">
@@ -70,7 +71,6 @@
                 </span>
                     </div>
                 </div>
-            </a>
 
             @endforeach
     </div>
