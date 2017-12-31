@@ -32,7 +32,7 @@
 {{--position1--}}
 <section class="ross_position_1">
     @if(count($products->where('position',1)))
-    <div class="ui container three cards link stackable">
+    <div class="ui container four cards link stackable">
         @foreach($products->where('position',1)->take(4) as $product)
                 <div class="card">
 
@@ -46,7 +46,7 @@
                         <div class="meta">
                             <a>{{ $product->model }}</a>
                         </div>
-                        <div class="description">
+                        <div class="description">2
                             {{ $product->intro_title }}
                         </div>
                     </div>
@@ -92,7 +92,7 @@
     <!--position2-->
     @if(count($products->where('position',2)))
     <div class="ui container stackable three cards">
-        @foreach($products->where('position',1)->take(4) as $product)
+        @foreach($products->where('position',1)->take(3) as $product)
         <div class="card">
             <div class="blurring dimmable image">
                 <div class="ui inverted dimmer">
