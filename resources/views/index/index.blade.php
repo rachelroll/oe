@@ -35,11 +35,12 @@
     <div class="ui container three cards link stackable">
         @foreach($products->where('position',1)->take(4) as $product)
                 <div class="card">
-                    <a href="{{ route('product.show',['id'=>$product->id]) }}">
+
                     <div class="image">
                         <img src="//{{ env('QINIU_HOST').$product->cover }}">
+                        <a class="ui button right floated" href="{{ route('product.show',['id'=>$product->id]) }}">查看详情</a>
                     </div>
-                    </a>
+
                     <div class="content">
                         <div class="header">{{ $product->name }}</div>
                         <div class="meta">
