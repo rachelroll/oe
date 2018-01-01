@@ -15,7 +15,7 @@ class IndexController extends Controller
         $products = Product::where('enabled',1)->orderBy('sort','ASC')->get();
         //轮播图
 
-        $categories = Category::where('enabled',1)->orderBy('sort','ASC')->limit(4)->get();
+        $categories = Category::where('enabled',1)->orderBy('sort','ASC')->limit(6)->get();
         return view('index.index', compact('products','categories'));
     }
 }
