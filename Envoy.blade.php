@@ -106,6 +106,7 @@
 @task('deployment_cache')
     php {{$release_dir}}/{{$release}}/artisan view:clear --quiet
     php {{$release_dir}}/{{$release}}/artisan cache:clear --quiet
+    php {{$release_dir}}/{{$release}}/artisan config:clear --quiet
     php {{$release_dir}}/{{$release}}/artisan config:cache --quiet
     echo 'Cache cleared'
 @endtask
