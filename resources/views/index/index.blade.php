@@ -106,7 +106,7 @@
                 <img src="//{{ env('QINIU_HOST') . $product->cover }}">
             </div>
             <div class="content">
-                <a class="header">{{ $product->name }}</a>
+                <a href="{{ route('product.show',['id'=>$product->id]) }}" class="header">{{ $product->name }}</a>
                 <div class="meta">
                     <span class="date">{{ $product->model }}</span>
                 </div>
@@ -154,7 +154,7 @@
                         <img src="//{{ env('QINIU_HOST') . $product->cover }}">
                     </div>
                     <div class="content">
-                        <a class="header">{{ $product->name }}</a>
+                        <a href="{{ route('product.show',['id'=>$product->id]) }}" class="header">{{ $product->name }}</a>
                         <div class="meta">
                             <span class="date">{{ $product->model }}</span>
                         </div>
