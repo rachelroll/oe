@@ -56,7 +56,7 @@
                                 <div class="ui container">
                                     @foreach($categories_link->product as $product)
                                     <a class="item" href="{{ route('product.show',['id'=>$product->id]) }}">
-                                        {{ $product->name }}
+                                        {{ $product->model }}
                                     </a>
                                     @endforeach
                                 </div>
