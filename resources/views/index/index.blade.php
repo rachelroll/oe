@@ -46,7 +46,7 @@
                         <div class="meta">
                             <a>{{ $product->model }}</a>
                         </div>
-                        <div class="description">2
+                        <div class="description">
                             {{ $product->intro_title }}
                         </div>
                     </div>
