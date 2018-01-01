@@ -33,7 +33,7 @@
 <section class="ross_position_1">
     @if(count($products->where('position',1)))
     <div class="ui container four cards link stackable">
-        @foreach($products->where('position',1)->take(4) as $product)
+        @foreach($products->where('position',1)->take(8) as $product)
                 <div class="card">
 
                     <div class="image">
@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="content">
-                        <div class="header">{{ $product->name }}</div>
+                        <div class="header">{{ $product->model }}</div>
                         <div class="meta">
                             <a>{{ $product->model }}</a>
                         </div>
@@ -106,9 +106,9 @@
                 <img src="//{{ env('QINIU_HOST') . $product->cover }}">
             </div>
             <div class="content">
-                <a href="{{ route('product.show',['id'=>$product->id]) }}" class="header">{{ $product->name }}</a>
+                <a href="{{ route('product.show',['id'=>$product->id]) }}" class="header">{{ $product->model }}</a>
                 <div class="meta">
-                    <span class="date">{{ $product->model }}</span>
+                    <span class="date">{{ $product->name }}</span>
                 </div>
             </div>
             <div class="extra content">
@@ -154,9 +154,9 @@
                         <img src="//{{ env('QINIU_HOST') . $product->cover }}">
                     </div>
                     <div class="content">
-                        <a href="{{ route('product.show',['id'=>$product->id]) }}" class="header">{{ $product->name }}</a>
+                        <a href="{{ route('product.show',['id'=>$product->id]) }}" class="header">{{ $product->model }}</a>
                         <div class="meta">
-                            <span class="date">{{ $product->model }}</span>
+                            <span class="date">{{ $product->name }}</span>
                         </div>
                     </div>
                     <div class="extra content">
