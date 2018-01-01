@@ -8,7 +8,7 @@
 <section class='featurettes'>
     <div class='ui container '>
         @if(count($categories))
-        <div class='ui four column special grid'>
+        <div class='ui six column special grid'>
             @foreach($categories as $category)
             <div class='column'>
                 <div class='featurette'>
