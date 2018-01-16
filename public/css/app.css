@@ -2949,7 +2949,12 @@ button.swiper-pagination-bullet {
 .ross_position_1 {
   padding-top: 26px; }
 
-.ross-position2 {
+.ross-category {
   padding-bottom: 40px; }
-  .ross-position2 .dimmable .dimmer p {
+  .ross-category .dimmable .dimmer p {
     color: #767676; }
+
+.ross_divided {
+  margin-top: 50px; }
+  .ross_divided .ross_column {
+    padding: 4px 0 !important; }

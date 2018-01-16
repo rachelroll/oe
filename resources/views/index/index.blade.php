@@ -26,16 +26,29 @@
 <!--featurettes.end-->
 
 {{--segment--}}
-<div class="ui segments ross_segments"></div>
+{{--<div class="ui segments ross_segments"></div>--}}
 {{--segment.end--}}
 
 {{--position1--}}
 <section class="ross_position_1">
-    @if(count($products->where('position',1)))
-    <div class="ui container four cards link stackable">
-        @foreach($products->where('position',1)->take(8) as $product)
+    @if(count($newProductArr))
+    <!--divided-->
+    <div class="ross_divided">
+        <div class="ui vertically divided grid">
+            <div class="ui container stackable">
+                <div class="row">
+                    <h1>新品速递</h1>
+                </div>
+            </div>
+            <div class="two column row">
+            </div>
+        </div>
+    </div>
+        <!--divided.end-->
+    @foreach($positionLayout as $key=>$layout)
+    <div class="ui container {{ \App\Utils\Utils::N2L((int)$layout) }} cards link stackable">
+        @foreach($newProductArr[$key] as $product)
                 <div class="card">
-
                     <div class="image">
                         <img src="//{{ env('QINIU_HOST').$product->cover }}">
                         <a class="ui button right floated" href="{{ route('product.show',['id'=>$product->id]) }}">查看详情</a>
@@ -75,7 +88,8 @@
 
             @endforeach
     </div>
-        @endif
+    @endforeach
+    @endif
 </section>
 {{--position1.end--}}
 
@@ -87,12 +101,28 @@
 </section>
 <!--segment.end-->
 
-{{--position2and3--}}
-<section class="ross-position2">
+{{--catetory--}}
+<section class="ross-category">
     <!--position2-->
-    @if(count($products->where('position',2)))
-    <div class="ui container stackable three cards">
-        @foreach($products->where('position',2)->take(3) as $product)
+    @if(count($categories))
+        @foreach($categories as $key=>$category)
+            <!--divided-->
+            <div class="ross_divided">
+                <div class="ui vertically divided grid">
+                    <div class="ui container stackable">
+                        <div class="row">
+                            <h1>{{$category->name}}</h1>
+                        </div>
+                    </div>
+                    <div class="two column row ross_column">
+                    </div>
+                </div>
+            </div>
+                <!--divided.end-->
+        @if(count($category->catLayout))
+            @foreach($category->catLayout as $k=>$layout)
+    <div class="ui container stackable {{\App\Utils\Utils::N2L((int)$layout)}} cards">
+        @foreach($catProductArr[$category->id][$k] as $product)
         <div class="card">
             <div class="blurring dimmable image">
                 <div class="ui inverted dimmer">
@@ -135,12 +165,10 @@
         </div>
         @endforeach
     </div>
-    @endif
-    <!--position2.end-->
-    <!--position3-->
-    @if(count($products->where('position',0)))
-        <div class="ui container stackable four cards">
-            @foreach($products->where('position',0)->take(16) as $product)
+        @endforeach
+        @else
+        <div class="ui container stackable three cards">
+            @foreach($catProductArr[$category->id][0] as $product)
                 <div class="card">
                     <div class="blurring dimmable image">
                         <div class="ui inverted dimmer">
@@ -182,9 +210,11 @@
                     </div>
                 </div>
             @endforeach
-    </div>
+        </div>
         @endif
-    <!--position3.end-->
+        @endforeach
+    @endif
+    <!--catetory.end-->
 </section>
 {{--position2.end--}}
 
