@@ -221,7 +221,7 @@
 @section('js')
     <script>
         $(function() {
-            $('.ross-position2 .card .dimmable').dimmer({
+            $('.ross-category .card .dimmable').dimmer({
                 on: 'hover'
             });
         });

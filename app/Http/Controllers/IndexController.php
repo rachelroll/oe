@@ -40,11 +40,13 @@ class IndexController extends Controller
             $catLayout  = collect(array_filter(explode('|',$item->layout)));
             $item->catLayout = $catLayout;
             if (count($catLayout)) {
-                $catLayout->each(function($i,$k) use (&$catProductArr,$catLayout,$item) {
+                $offset = 0;
+                $catLayout->each(function($i,$k) use (&$catProductArr,$catLayout,$item,&$offset) {
                     if ($k == 0) {
                         $catProductArr[$item->id][] = Product::with('category')->where('enabled',1)->where('cat_id',$item->id)->orderBy('sort','ASC')->limit($i)->get();
                     } else {
-                        $catProductArr[$item->id][] = Product::with('category')->where('enabled',1)->where('cat_id',$item->id)->orderBy('sort','ASC')->limit($i)->offset($catLayout[$k-1])->get();
+                        $offset += $catLayout[$k-1];
+                        $catProductArr[$item->id][] = Product::with('category')->where('enabled',1)->where('cat_id',$item->id)->orderBy('sort','ASC')->limit($i)->offset($offset)->get();
                     }
                 });
             } else {
