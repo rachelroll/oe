@@ -14,7 +14,7 @@
                 <div class='featurette'>
                     <h3>{{ $category->name }}</h3>
                     <div class='content text-muted'>
-                        {{ $category->intro }}
+                        {!! $category->intro !!}
                     </div>
                 </div>
             </div>
@@ -83,6 +83,7 @@
                         @endif
                     </div>
                 </span>
+                        <span class="right floated">¥{{ number_format($product->price,2) }}</span>
                     </div>
                 </div>
 
@@ -161,6 +162,7 @@
                         @endif
                     </div>
                 </span>
+                <span class="right floated">¥{{ number_format($product->price,2) }}</span>
             </div>
         </div>
         @endforeach
@@ -207,6 +209,7 @@
                         @endif
                     </div>
                 </span>
+                        <span class="right floated">¥{{ number_format($product->price,2) }}</span>
                     </div>
                 </div>
             @endforeach

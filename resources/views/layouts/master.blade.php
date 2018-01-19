@@ -84,9 +84,7 @@
                 </div>
                     @endif
             </div>
-            <a class="item">
-                <i class="grid layout icon"></i> 其他
-            </a>
+
             <div class="right item">
                 <div class="ui input"><input type="text" placeholder="搜索..."></div>
             </div>
@@ -102,33 +100,20 @@
     <div class=" wow ui inverted vertical footer segment">
         <div class="ui center aligned container">
             <div class="ui stackable inverted divided grid">
+                @if(count($footCate))
+                    @foreach($footCate as $footcat)
                 <div class="three wide column">
-                    <h4 class="ui inverted header">Group 1</h4>
+                    <h4 class="ui inverted header">{{ $footcat->name }}</h4>
                     <div class="ui inverted link list">
-                        <a href="#" class="item">Link One</a>
-                        <a href="#" class="item">Link Two</a>
-                        <a href="#" class="item">Link Three</a>
-                        <a href="#" class="item">Link Four</a>
+                        @if(count($footcat->foot))
+                            @foreach($footcat->foot as $foot)
+                        <a href="{{  url('foot') . '/' . $foot->id }}" class="item">{{ $foot->name }}</a>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
-                <div class="three wide column">
-                    <h4 class="ui inverted header">Group 2</h4>
-                    <div class="ui inverted link list">
-                        <a href="#" class="item">Link One</a>
-                        <a href="#" class="item">Link Two</a>
-                        <a href="#" class="item">Link Three</a>
-                        <a href="#" class="item">Link Four</a>
-                    </div>
-                </div>
-                <div class="three wide column">
-                    <h4 class="ui inverted header">Group 3</h4>
-                    <div class="ui inverted link list">
-                        <a href="#" class="item">Link One</a>
-                        <a href="#" class="item">Link Two</a>
-                        <a href="#" class="item">Link Three</a>
-                        <a href="#" class="item">Link Four</a>
-                    </div>
-                </div>
+                    @endforeach
+                @endif
                 <div class="seven wide column">
                     <h4 class="ui inverted header">Footer Header</h4>
                     <p>Extra space for a call to action inside the footer that could help re-engage users.</p>

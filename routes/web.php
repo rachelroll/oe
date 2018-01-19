@@ -22,6 +22,10 @@ Route::get('category/{id}', 'CategoryController@show')->name('category.show');
 
 //关于
 Route::get('/about/{id}', 'AboutController@show')->name('about.show');
+
+//footer
+Route::get('/foot/{id}', 'FootController@show')->name('foot.show');
+
 ////技术支持
 //Route::get('/support', 'AboutController@support');
 //
