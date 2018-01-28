@@ -23,7 +23,7 @@
     {{--</script>--}}
 </head>
 <body>
-    <section id="ross_menu">
+    <section id="ross_menu" style="margin-bottom: 48px">
     <div class="ui vertical inverted sidebar icon labeled menu">
         <a class="active item">Home</a>
         <a class="item">Work23234234</a>
@@ -33,13 +33,13 @@
         <a class="item">Signup</a>
     </div>
 
-    <div class="ui fixed inverted  menu">
+    <div class="ui fixed inverted  menu" >
         <div class="ui container">
             <a class="toc item">
                 <i class="sidebar icon"></i>
             </a>
             <a href="{{ url('/') }}" class="item">
-                <i class="home icon"></i> 主页
+                <i class="home icon"></i> 主页2
             </a>
             <div class="ui simple dropdown item">
                 产品中心
@@ -98,7 +98,7 @@
 
 {{--页脚--}}
     <div class=" wow ui inverted vertical footer segment">
-        <div class="ui center aligned container">
+        <div class="ui left aligned container">
             <div class="ui stackable inverted divided grid">
                 @if(count($footCate))
                     @foreach($footCate as $footcat)
@@ -114,9 +114,16 @@
                 </div>
                     @endforeach
                 @endif
-                <div class="seven wide column">
-                    <h4 class="ui inverted header">Footer Header</h4>
-                    <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+                <div class="four wide column">
+                    <h4 class="ui inverted header">关注</h4>
+                    <div class="ui inverted link list">
+                        <ul>
+                            <li>微信</li>
+                            <li>钉钉</li>
+                            <li>微博</li>
+                            <li>Twitter</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="ui inverted section divider"></div>
