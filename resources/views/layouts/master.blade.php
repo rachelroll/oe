@@ -107,7 +107,11 @@
                     <div class="ui inverted link list">
                         @if(count($footcat->foot))
                             @foreach($footcat->foot as $foot)
-                        <a href="{{  url('foot') . '/' . $foot->id }}" class="item">{{ $foot->name }}</a>
+                                @if($foot->type)
+                                    <a href="{{  $foot->url }}" target="_blank" class="item">{{ $foot->name }}</a>
+                                @else
+                                    <a href="{{  url('foot') . '/' . $foot->id }}" class="item">{{ $foot->name }}</a>
+                                @endif
                             @endforeach
                         @endif
                     </div>
