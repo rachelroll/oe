@@ -1,9 +1,13 @@
 @extends('layouts.master')
 @section('content')
     @if($product->banner)
-    <div class="banner">
-        <img src="//{{ env('QINIU_HOST').$product->banner }}" alt=""/>
-    </div>
+        <div class="ui one column centered grid">
+            <div class="row">
+                <div class="banner">
+                    <img src="//{{ env('QINIU_HOST').$product->banner }}" alt=""/>
+                </div>
+            </div>
+        </div>
     @elseif($product->video_mp4)
     <!-- Swiper,产品专用swiper -->
     <section class="vide" style="margin-top: 44px;">

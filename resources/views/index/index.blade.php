@@ -3,7 +3,6 @@
 <!-- Swiper -->
 @include('layouts.carousel')
 <!--Swiper.end-->
-
 <!--featurettes-->
 <section class='featurettes'>
     <div class='ui container '>
@@ -32,27 +31,26 @@
 {{--position1--}}
 <section class="ross_position_1">
     @if(count($newProductArr))
-    <!--divided-->
+    <!--新品速递-->
     <div class="ross_divided">
         <div class="ui vertically divided grid">
             <div class="ui container stackable">
                 <div class="row">
-                    <h1>新品速递</h1>
+                    <h1 style="color: #ff5e49;">新品速递</h1>
                 </div>
             </div>
             <div class="two column row">
             </div>
         </div>
     </div>
-        <!--divided.end-->
+        <!--新品速递.end-->
     @foreach($positionLayout as $key=>$layout)
     <div class="ui container {{ \App\Utils\Utils::N2L((int)$layout) }} cards link stackable">
         @foreach($newProductArr[$key] as $product)
                 <div class="card">
-                    <div class="image">
-                        <img src="//{{ env('QINIU_HOST').$product->cover }}">
-                        <a class="ui button right floated" href="{{ route('product.show',['id'=>$product->id]) }}">查看详情</a>
-                    </div>
+                    <a class="image" href="{{ route('product.show',['id'=>$product->id]) }}">
+                            <img src="//{{ env('QINIU_HOST').$product->cover }}">
+                    </a>
 
                     <div class="content">
                         <div class="header">{{ $product->model }}</div>
@@ -64,26 +62,36 @@
                         </div>
                     </div>
                     <div class="extra content">
-                <span>
-                       评级
-                    <div class="ui star rating">
-                        @if($product->rating)
-                            @for ($i = 0; $i < $product->rating; $i++)
-                                <i class="icon active"></i>
-                            @endfor
-                            @for ($i = 0; $i < (5-$product->rating); $i++)
-                                <i class="icon"></i>
-                            @endfor
-                        @else
-                            <i class="icon"></i>
-                            <i class="icon"></i>
-                            <i class="icon"></i>
-                            <i class="icon"></i>
-                            <i class="icon"></i>
-                        @endif
-                    </div>
-                </span>
-                        <span class="right floated">¥{{ number_format($product->price,2) }}</span>
+                        <span>
+                               评级
+                            <div class="ui star rating">
+                                @if($product->rating)
+                                    @for ($i = 0; $i < $product->rating; $i++)
+                                        <i class="icon active"></i>
+                                    @endfor
+                                    @for ($i = 0; $i < (5-$product->rating); $i++)
+                                        <i class="icon"></i>
+                                    @endfor
+                                @else
+                                    <i class="icon"></i>
+                                    <i class="icon"></i>
+                                    <i class="icon"></i>
+                                    <i class="icon"></i>
+                                    <i class="icon"></i>
+                                @endif
+                            </div>
+                        </span>
+                        <div class="ui labeled button right floated" tabindex="0">
+
+                            <a class="ui basic blue button" href="http://www.baidu.com">
+                                 在线购买
+                            </a>
+
+                            <div class="ui basic left pointing blue label">
+                                <span>¥{{ number_format($product->price,2) }}</span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -94,15 +102,9 @@
 </section>
 {{--position1.end--}}
 
-<!--segment-->
-<section class="wow" style="background-color: #999; padding: 1em 0em; margin: 40px 0;">
-    <div class="ui container inverted center aligned red column">
-        <h3 style="color: white"></h3>
-    </div>
-</section>
-<!--segment.end-->
 
 {{--catetory--}}
+
 <section class="ross-category">
     <!--position2-->
     @if(count($categories))

@@ -26,7 +26,7 @@
     <section id="ross_menu" style="margin-bottom: 48px">
     <div class="ui vertical inverted sidebar icon labeled menu">
         <a class="active item">Home</a>
-        <a class="item">Work23234234</a>
+        <a class="item">Work</a>
         <a class="item">Company</a>
         <a class="item">Careers</a>
         <a class="item">Login</a>
@@ -39,7 +39,7 @@
                 <i class="sidebar icon"></i>
             </a>
             <a href="{{ url('/') }}" class="item">
-                <i class="home icon"></i> 主页2
+                <i class="home icon"></i> 主页
             </a>
             <div class="ui simple dropdown item">
                 产品中心
@@ -84,13 +84,12 @@
                 </div>
                     @endif
             </div>
-
             <div class="right item">
                 <div class="ui input"><input type="text" placeholder="搜索..."></div>
             </div>
         </div>
     </div>
-</section>
+    </section>
 
     <main>
         @yield('content')
