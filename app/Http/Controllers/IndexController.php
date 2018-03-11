@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Carousel;
 use App\Models\Category;
+use App\Models\Message;
 use App\Models\NewPosition;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -56,6 +57,26 @@ class IndexController extends Controller
         return view('index.index', compact('catProductArr','categories','newProductArr','positionLayout'));
     }
 
+    public function sendMessage()
+    {
+        $value = request('value');
+        if ($value) {
+            if (!$value['contact']) {
+                return response()->json('留个联系方式吧');
+            }
+            $data = [
+                'name'=>$value['name'] ?:'',
+                'contact'=>$value['contact'] ?:'',
+                'message'=>$value['message'] ?:'',
+            ];
+            $message = Message::create($data);
+            if ($message) {
+                return response()->json(['message'=>'感谢您的留言,我们会及时联系您']);
+            }
+        }
+        return response()->json('留言失败');
+
+    }
 
 
 

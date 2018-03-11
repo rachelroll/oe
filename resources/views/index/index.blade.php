@@ -24,46 +24,189 @@
 </section>
 <!--featurettes.end-->
 
-{{--segment--}}
-{{--<div class="ui segments ross_segments"></div>--}}
-{{--segment.end--}}
-
-{{--position1--}}
+{{--新品速递--}}
 <section class="ross_position_1">
     @if(count($newProductArr))
-    <!--新品速递-->
     <div class="ross_divided">
         <div class="ui vertically divided grid">
             <div class="ui container stackable">
                 <div class="row">
-                    <h1 style="color: #ff5e49;">新品速递</h1>
+                    <h1 style="color: #1678c2 !important;">新品速递</h1>
                 </div>
             </div>
             <div class="two column row">
             </div>
         </div>
     </div>
-        <!--新品速递.end-->
     @foreach($positionLayout as $key=>$layout)
     <div class="ui container {{ \App\Utils\Utils::N2L((int)$layout) }} cards link stackable">
         @foreach($newProductArr[$key] as $product)
-                <div class="card">
-                    <a class="image" href="{{ route('product.show',['id'=>$product->id]) }}">
-                            <img src="//{{ env('QINIU_HOST').$product->cover }}">
-                    </a>
+            <div class="card">
+                <a class="image" href="{{ route('product.show',['id'=>$product->id]) }}">
+                        <img src="//{{ env('QINIU_HOST').$product->cover }}">
+                </a>
 
-                    <div class="content">
-                        <div class="header">{{ $product->model }}</div>
-                        <div class="meta">
-                            <a>{{ $product->name }}</a>
+                <div class="content">
+                    <div class="header">{{ $product->model }}</div>
+                    <div class="meta">
+                        <a>{{ $product->name }}</a>
+                    </div>
+                    <div class="description">
+                        {{ $product->intro_title }}
+                    </div>
+                </div>
+                <div class="extra content">
+                    <span>评级</span>
+                    <div class="ui star rating">
+                        @if($product->rating)
+                            @for ($i = 0; $i < $product->rating; $i++)
+                                <i class="icon active"></i>
+                            @endfor
+                            @for ($i = 0; $i < (5-$product->rating); $i++)
+                                <i class="icon"></i>
+                            @endfor
+                        @else
+                            <i class="icon"></i>
+                            <i class="icon"></i>
+                            <i class="icon"></i>
+                            <i class="icon"></i>
+                            <i class="icon"></i>
+                        @endif
+                    </div>
+                    <div class="ui labeled button right floated" tabindex="0">
+                        @if($product->buy_url)
+                        <a class="ui basic blue button" href="{{ $product->buy_url }}">
+                             在线购买
+                        </a>
+                        @endif
+                        @if($product->price)
+                        <div class="ui basic left pointing blue label">
+                            <span>¥{{ number_format($product->price,2) }}</span>
                         </div>
-                        <div class="description">
-                            {{ $product->intro_title }}
+                        @else
+                        <div class="ui basic left pointing blue label message">
+                            <span>留言询价</span>
+                        </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    @endforeach
+    @endif
+</section>
+{{--新品速递.end--}}
+
+
+{{--分类遍历--}}
+<section class="ross-category">
+    <!--position2-->
+    @if(count($categories))
+        @foreach($categories as $key=>$category)
+            <!--divided-->
+            <div class="ross_divided">
+                <div class="ui vertically divided grid">
+                    <div class="ui container stackable">
+                        <div class="row">
+                            <h1>{{$category->name}}</h1>
                         </div>
                     </div>
-                    <div class="extra content">
-                        <span>
-                               评级
+                    <div class="two column row ross_column">
+                    </div>
+
+                </div>
+            </div>
+                <!--divided.end-->
+        @if(count($category->catLayout))
+            @foreach($category->catLayout as $k=>$layout)
+                <div class="ui container stackable {{\App\Utils\Utils::N2L((int)$layout)}} cards">
+                    @foreach($catProductArr[$category->id][$k] as $product)
+                        <div class="card">
+                            <div class="blurring dimmable image">
+                                <div class="ui inverted dimmer">
+                                    <div class="content">
+                                        <div class="center">
+                                            <p class="ui inverted">{{ $product->intro_title }}</p>
+                                            <div class="ui  button">
+                                                <a href="{{ route('product.show',['id'=>$product->id]) }}">查看详情</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img src="//{{ env('QINIU_HOST') . $product->cover }}">
+                            </div>
+                            <div class="content">
+                                <a href="{{ route('product.show',['id'=>$product->id]) }}" class="header">{{ $product->model }}</a>
+                                <div class="meta">
+                                    <span class="date">{{ $product->name }}</span>
+                                </div>
+                            </div>
+                            <div class="extra content">
+                                <span>评级</span>
+                                <div class="ui star rating">
+                                    @if($product->rating)
+                                        @for ($i = 0; $i < $product->rating; $i++)
+                                            <i class="icon active"></i>
+                                        @endfor
+                                        @for ($i = 0; $i < (5-$product->rating); $i++)
+                                            <i class="icon"></i>
+                                        @endfor
+                                    @else
+                                        <i class="icon"></i>
+                                        <i class="icon"></i>
+                                        <i class="icon"></i>
+                                        <i class="icon"></i>
+                                        <i class="icon"></i>
+                                    @endif
+                                </div>
+                                <div class="ui labeled button right floated" tabindex="0">
+                                    @if($product->buy_url)
+                                        <a class="ui basic blue button" href="{{ $product->buy_url }}">
+                                            在线购买
+                                        </a>
+                                    @endif
+                                    @if($product->price)
+                                        <div class="ui basic left pointing blue label">
+                                            <span>¥{{ number_format($product->price,2) }}</span>
+                                        </div>
+                                    @else
+                                        <div class="ui basic left pointing blue label message" >
+                                            <span>留言询价</span>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach
+        @else
+            <div class="ui container stackable three cards">
+                @foreach($catProductArr[$category->id][0] as $product)
+                    <div class="card">
+                        <div class="blurring dimmable image">
+                            <div class="ui inverted dimmer">
+                                <div class="content">
+                                    <div class="center">
+                                        <p class="ui inverted">{{ $product->intro_title }}</p>
+                                        <div class="ui  button">
+                                            <a href="{{ route('product.show',['id'=>$product->id]) }}">查看详情
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="//{{ env('QINIU_HOST') . $product->cover }}">
+                        </div>
+                        <div class="content">
+                            <a href="{{ route('product.show',['id'=>$product->id]) }}" class="header">{{ $product->model }}</a>
+                            <div class="meta">
+                                <span class="date">{{ $product->name }}</span>
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <span>评级</span>
                             <div class="ui star rating">
                                 @if($product->rating)
                                     @for ($i = 0; $i < $product->rating; $i++)
@@ -80,148 +223,32 @@
                                     <i class="icon"></i>
                                 @endif
                             </div>
-                        </span>
-                        <div class="ui labeled button right floated" tabindex="0">
-
-                            <a class="ui basic blue button" href="http://www.baidu.com">
-                                 在线购买
-                            </a>
-
-                            <div class="ui basic left pointing blue label">
-                                <span>¥{{ number_format($product->price,2) }}</span>
+                            <div class="ui labeled button right floated" tabindex="0">
+                                @if($product->buy_url)
+                                    <a class="ui basic blue button" href="{{ $product->buy_url }}">
+                                        在线购买
+                                    </a>
+                                @endif
+                                @if($product->price)
+                                    <div class="ui basic left pointing blue label">
+                                        <span>¥{{ number_format($product->price,2) }}</span>
+                                    </div>
+                                @else
+                                    <div class="ui basic left pointing blue label">
+                                        <span>留言询价</span>
+                                    </div>
+                                @endif
                             </div>
                         </div>
-
                     </div>
-                </div>
-
-            @endforeach
-    </div>
-    @endforeach
-    @endif
-</section>
-{{--position1.end--}}
-
-
-{{--catetory--}}
-
-<section class="ross-category">
-    <!--position2-->
-    @if(count($categories))
-        @foreach($categories as $key=>$category)
-            <!--divided-->
-            <div class="ross_divided">
-                <div class="ui vertically divided grid">
-                    <div class="ui container stackable">
-                        <div class="row">
-                            <h1>{{$category->name}}</h1>
-                        </div>
-                    </div>
-                    <div class="two column row ross_column">
-                    </div>
-                </div>
+                @endforeach
             </div>
-                <!--divided.end-->
-        @if(count($category->catLayout))
-            @foreach($category->catLayout as $k=>$layout)
-    <div class="ui container stackable {{\App\Utils\Utils::N2L((int)$layout)}} cards">
-        @foreach($catProductArr[$category->id][$k] as $product)
-        <div class="card">
-            <div class="blurring dimmable image">
-                <div class="ui inverted dimmer">
-                    <div class="content">
-                        <div class="center">
-                            <p class="ui inverted">{{ $product->intro_title }}</p>
-                            <a href="{{ route('product.show',['id'=>$product->id]) }}"><div class="ui  button">查看详情</div></a>
-                        </div>
-                    </div>
-                </div>
-                <img src="//{{ env('QINIU_HOST') . $product->cover }}">
-            </div>
-            <div class="content">
-                <a href="{{ route('product.show',['id'=>$product->id]) }}" class="header">{{ $product->model }}</a>
-                <div class="meta">
-                    <span class="date">{{ $product->name }}</span>
-                </div>
-            </div>
-            <div class="extra content">
-               <span>
-                       评级
-                    <div class="ui star rating">
-                        @if($product->rating)
-                            @for ($i = 0; $i < $product->rating; $i++)
-                                <i class="icon active"></i>
-                            @endfor
-                            @for ($i = 0; $i < (5-$product->rating); $i++)
-                                <i class="icon"></i>
-                            @endfor
-                        @else
-                            <i class="icon"></i>
-                            <i class="icon"></i>
-                            <i class="icon"></i>
-                            <i class="icon"></i>
-                            <i class="icon"></i>
-                        @endif
-                    </div>
-                </span>
-                <span class="right floated">¥{{ number_format($product->price,2) }}</span>
-            </div>
-        </div>
-        @endforeach
-    </div>
-        @endforeach
-        @else
-        <div class="ui container stackable three cards">
-            @foreach($catProductArr[$category->id][0] as $product)
-                <div class="card">
-                    <div class="blurring dimmable image">
-                        <div class="ui inverted dimmer">
-                            <div class="content">
-                                <div class="center">
-                                    <p class="ui inverted">{{ $product->intro_title }}</p>
-                                    <a href="{{ route('product.show',['id'=>$product->id]) }}"><div class="ui  button">查看详情</div></a>
-                                </div>
-                            </div>
-                        </div>
-                        <img src="//{{ env('QINIU_HOST') . $product->cover }}">
-                    </div>
-                    <div class="content">
-                        <a href="{{ route('product.show',['id'=>$product->id]) }}" class="header">{{ $product->model }}</a>
-                        <div class="meta">
-                            <span class="date">{{ $product->name }}</span>
-                        </div>
-                    </div>
-                    <div class="extra content">
-               <span>
-                       评级
-                    <div class="ui star rating">
-                        @if($product->rating)
-                            @for ($i = 0; $i < $product->rating; $i++)
-                                <i class="icon active"></i>
-                            @endfor
-                            @for ($i = 0; $i < (5-$product->rating); $i++)
-                                <i class="icon"></i>
-                            @endfor
-                        @else
-                            <i class="icon"></i>
-                            <i class="icon"></i>
-                            <i class="icon"></i>
-                            <i class="icon"></i>
-                            <i class="icon"></i>
-                        @endif
-                    </div>
-                </span>
-                        <span class="right floated">¥{{ number_format($product->price,2) }}</span>
-                    </div>
-                </div>
-            @endforeach
-        </div>
         @endif
         @endforeach
     @endif
-    <!--catetory.end-->
 </section>
-{{--position2.end--}}
+{{--分类遍历.end--}}
+
 
 @section('js')
     <script>
@@ -252,6 +279,66 @@
                 prevEl: '.swiper-button-prev'
             },
             autoHeight: true
+        });
+    </script>
+    <script>
+        $('.message').on('click', function () {
+            swal({
+                title: '客服会及时与您沟通',
+                html:
+                '<label for="swal-input0">姓名:</label>' +
+                '<input id="swal-input0" class="swal2-input">' +
+                '<label for="swal-input1">邮箱或手机:</label>' +
+                '<input id="swal-input1" class="swal2-input" autofocus>' +
+                '<label for="swal-input2">留言:</label>' +
+                '<textarea id="swal-input2" rows="6" style="height: 200px;" class="swal2-input">',
+
+                showCancelButton: true,
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                preConfirm: function(result) {
+                    return new Promise(function(resolve) {
+                        if (result) {
+                            resolve([
+                                $('#swal-input0').val(),
+                                $('#swal-input1').val(),
+                                $('#swal-input2').val()
+                            ]);
+                        }
+                    });
+                }
+            }).then(function (result) {
+                if(result.value) {
+                    if (result.value[1]) {
+                        var val = {
+                            name:result.value[0],
+                            contact:result.value[1],
+                            message:result.value[2]
+                        };
+                        $.ajax({
+                            url: '/send-message',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {
+                                _token: '{{ csrf_token() }}',
+                                value: val
+                            }
+                        })
+                            .done(function (response) {
+                                console.log(response);
+                                swal({
+                                    type: 'success',
+                                    html: response.message
+                                });
+                            })
+                            .fail(function () {
+                                swal('哎呦……', '出错了');
+                            })
+                    }else {
+                        swal("哎呦……",'请留个联系方式吧!!');
+                    }
+                }
+            })
         });
     </script>
 @stop

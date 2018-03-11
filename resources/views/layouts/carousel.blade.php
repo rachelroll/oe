@@ -3,7 +3,9 @@
         <div class="swiper-wrapper">
             @foreach($carousels as $carousel)
                 <div class="swiper-slide">
-                    <a href="{{ route('product.show',['id'=>$carousel->url]) }}"><img src="//{{ env('QINIU_HOST') . $carousel->img }}" alt=""/></a>
+                    <a href="{{ is_integer($carousel->url) ? route('product.show',['id'=>$carousel->url]) : $carousel->url }}">
+                        <img src="//{{ env('QINIU_HOST') . $carousel->img }}" alt=""/>
+                    </a>
                 </div>
             @endforeach
         </div>

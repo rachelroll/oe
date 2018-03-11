@@ -71,11 +71,15 @@
     echo 'Your branch is ' {{ $branch }}
     cd {{ $current_dir }}
     pwd
-    git pull origin {{ $branch }}
-    git submodule foreach git pull origin {{ $branch }}
-    php artisan migrate
-    php artisan view:clear
-    php artisan config:clear
+    {{--git pull origin {{ $branch }}--}}
+    {{--git submodule foreach git pull origin {{ $branch }}--}}
+    {{--php artisan migrate--}}
+    {{--php artisan view:clear--}}
+    {{--php artisan config:clear--}}
+rm -rf storage
+    ln -s   {{ $shared_dir }}/storage storage
+    chmod -R ug+rwx {{ $shared_dir }}/storage
+    echo "submodule git_pull finished"
 
 @endtask
 

@@ -18,6 +18,10 @@ Route::resource('/register', 'RegisterController');
 Route::get('/login', 'RegisterController@login');
 Route::get('/product/{id}', 'ProductController@show')->name('product.show');//产品详情
 Route::get('/product', 'ProductController@index')->name('product.index');
+
+//products instruction
+Route::get('/instruction', 'InstructionController@index')->name('instruction.index');
+
 Route::get('category/{id}', 'CategoryController@show')->name('category.show');
 
 //关于
@@ -25,6 +29,11 @@ Route::get('/about/{id}', 'AboutController@show')->name('about.show');
 
 //footer
 Route::get('/foot/{id}', 'FootController@show')->name('foot.show');
+//send-message
+Route::post('/send-message', 'Indexcontroller@sendMessage')->name('index.send-message');
+//search
+Route::get('/search', 'SearchController@search')->name('search.search');
+
 
 ////技术支持
 //Route::get('/support', 'AboutController@support');

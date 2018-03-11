@@ -13,9 +13,9 @@
         <li class="site-nav--has-submenu @if(str_contains(Request::url(),'category') || str_contains(Request::url(),'product')) active  @endif">
             <a href="/product" class="site-nav__link dropdown-button" data-activates="features-dropdown" data-belowOrigin="true" data-constrainWidth="false" data-hover="true">产品中心<i class="material-icons right">arrow_drop_down</i>
             </a>
-            @if($categories_link)
+            @if($categories_links)
             <ul id="features-dropdown" class="site-nav__submenu dropdown-content">
-                @foreach($categories_link as $category)
+                @foreach($categories_links as $category)
                 <li>
                     <a href="{{ route('category.show',['id'=>$category->id])}}" class="site-nav__link">{{$category->name}}</a>
                 </li>
@@ -31,9 +31,9 @@
         <li class="site-nav--has-submenu  @if(str_contains(Request::url(),'about')) active  @endif">
             <a href="#" class="site-nav__link dropdown-button" data-activates="features-dropdown-about" data-belowOrigin="true" data-constrainWidth="false" data-hover="true">关于<i class="material-icons right">arrow_drop_down</i>
             </a>
-            @if($about_link)
+            @if($about_links)
             <ul id="features-dropdown-about" class="site-nav__submenu dropdown-content">
-                @foreach($about_link as $about)
+                @foreach($about_links as $about)
                 <li>
                     <a href="{{ url('/about') . '/' . $about->id }}" class="site-nav__link">{{ $about->title }}</a>
                 </li>

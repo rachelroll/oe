@@ -11,16 +11,12 @@
 
     @yield('style')
 
-    <script src="/js/app.js"></script>
     <script src="/js/swiper.min.js"></script>
+    <script src="https://cdn.bootcss.com/limonte-sweetalert2/7.15.0/sweetalert2.all.min.js"></script>
+    <script src="/js/app.js"></script>
 
     <title>OE360</title>
 
-    {{--<script>--}}
-        {{--$(function() {--}}
-            {{--$('.ui.sidebar').sidebar('attach events', '.toc.item');--}}
-        {{--});--}}
-    {{--</script>--}}
 </head>
 <body>
     <section id="ross_menu" style="margin-bottom: 48px">
@@ -85,7 +81,7 @@
                     @endif
             </div>
             <div class="right item">
-                <div class="ui input"><input type="text" placeholder="搜索..."></div>
+                <div class="ui input"><input id="search" type="text" placeholder="搜索..."></div>
             </div>
         </div>
     </div>
@@ -117,15 +113,22 @@
                 </div>
                     @endforeach
                 @endif
-                <div class="four wide column">
+                <div class="two wide column">
                     <h4 class="ui inverted header">关注</h4>
                     <div class="ui inverted link list">
-                        <ul>
-                            <li>微信</li>
-                            <li>钉钉</li>
-                            <li>微博</li>
-                            <li>Twitter</li>
-                        </ul>
+                        <a href="#" target="_blank" class="item">微信</a>
+                        <a href="#" target="_blank" class="item">微博</a>
+                        <a href="#" target="_blank" class="item">Twitter</a>
+                    </div>
+                </div>
+                <div class="two wide column">
+                    <h4 class="ui inverted orange header message2">热线 (点击留言)</h4>
+                    <div class="ui inverted link list orange">
+                        <div class="message2">
+                            <i class="phone icon"></i>
+                            <span>400-8988-360</span>
+                        </div>
+                        <div class="message2">（ 7*12小时热线）</div>
                     </div>
                 </div>
             </div>
@@ -138,5 +141,75 @@
 {{--页脚.end--}}
 
 @yield('js')
+    <script>
+        $('#search').keypress(function (e) {
+            var key = e.which;
+            if(key == 13)  // the enter key code
+            {
+                var model = $(this).val();
+                document.location.href = "{{ route('search.search') }}" + "?model=" + model;
+            }
+        });
+    </script>
+    <script>
+        $('.message2').on('click', function () {
+            swal({
+                title: '客服会及时与您沟通',
+                html:
+                '<label for="swal-input0">姓名:</label>' +
+                '<input id="swal-input0" class="swal2-input">' +
+                '<label for="swal-input1">邮箱或手机:</label>' +
+                '<input id="swal-input1" class="swal2-input" autofocus>' +
+                '<label for="swal-input2">留言:</label>' +
+                '<textarea id="swal-input2" rows="6" style="height: 200px;" class="swal2-input">',
+
+                showCancelButton: true,
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                preConfirm: function(result) {
+                    return new Promise(function(resolve) {
+                        if (result) {
+                            resolve([
+                                $('#swal-input0').val(),
+                                $('#swal-input1').val(),
+                                $('#swal-input2').val()
+                            ]);
+                        }
+                    });
+                }
+            }).then(function (result) {
+                if(result.value) {
+                    if (result.value[1]) {
+                        var val = {
+                            name:result.value[0],
+                            contact:result.value[1],
+                            message:result.value[2]
+                        };
+                        $.ajax({
+                            url: '/send-message',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {
+                                _token: '{{ csrf_token() }}',
+                                value: val
+                            }
+                        })
+                            .done(function (response) {
+                                console.log(response);
+                                swal({
+                                    type: 'success',
+                                    html: response.message
+                                });
+                            })
+                            .fail(function () {
+                                swal('哎呦……', '出错了');
+                            })
+                    }else {
+                        swal("哎呦……",'请留个联系方式吧!!');
+                    }
+                }
+            })
+        });
+    </script>
 </body>
 </html>
