@@ -30,7 +30,7 @@ Route::get('/about/{id}', 'AboutController@show')->name('about.show');
 //footer
 Route::get('/foot/{id}', 'FootController@show')->name('foot.show');
 //send-message
-Route::post('/send-message', 'Indexcontroller@sendMessage')->name('index.send-message');
+Route::post('/send-message', 'IndexController@sendMessage')->name('index.send-message');
 //search
 Route::get('/search', 'SearchController@search')->name('search.search');
 
