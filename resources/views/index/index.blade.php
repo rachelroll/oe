@@ -285,6 +285,7 @@
     </script>
     <script>
         $('.message').on('click', function () {
+            var model = $(this).attr('key');
             swal({
                 title: '客服会及时与您沟通',
                 html:
@@ -310,6 +311,8 @@
                                 contact:$('#swal-input1').val(),
                                 message:$('#swal-input2').val()
                             };
+
+                            console.log(model);
                             if(!val.contact) {
                                 swal('哎呦……', '留个联系方式吧');
                                 return false;
@@ -322,7 +325,7 @@
                                 data: {
                                     _token: '{{ csrf_token() }}',
                                     value: val,
-                                    model:$(this).attr('key')
+                                    model:model
                                 }
                             })
                                 .done(function (response) {
