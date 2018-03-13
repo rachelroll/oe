@@ -13,8 +13,24 @@ class IndexController extends Controller
 {
     public function index()
     {
-
         $categories = Category::has('product')->where('enabled',1)->orderBy('sort','ASC')->limit(6)->get();
+        $is_mobile = false;
+        if(isset($_SERVER['HTTP_USER_AGENT'])) {
+            $userAgent = strtolower($_SERVER['HTTP_USER_AGENT']);
+            $clientkeywords = array(
+                'nokia', 'sony', 'ericsson', 'mot', 'samsung', 'htc', 'sgh', 'lg', 'sharp', 'sie-'
+            ,'philips', 'panasonic', 'alcatel', 'lenovo', 'iphone', 'ipod', 'blackberry', 'meizu',
+                'android', 'netfront', 'symbian', 'ucweb', 'windowsce', 'palm', 'operamini',
+                'operamobi', 'opera mobi', 'openwave', 'nexusone', 'cldc', 'midp', 'wap', 'mobile'
+            );
+            // 从HTTP_USER_AGENT中查找手机浏览器的关键字
+            if(preg_match("/(".implode('|',$clientkeywords).")/i",$userAgent)&&strpos($userAgent,'ipad') === false)
+            {
+                $is_mobile = true;
+            }
+        }
+
+
 
         //新品速递位置
         $newPosition = NewPosition::where('enabled',1)->first();
@@ -54,7 +70,7 @@ class IndexController extends Controller
                 $catProductArr[$item->id][] = Product::with('category')->where('enabled',1)->where('cat_id',$item->id)->orderBy('sort','ASC')->get();
             }
         });
-        return view('index.index', compact('catProductArr','categories','newProductArr','positionLayout'));
+        return view('index.index', compact('catProductArr','categories','newProductArr','positionLayout','is_mobile'));
     }
 
     public function sendMessage()
@@ -77,6 +93,7 @@ class IndexController extends Controller
         return response()->json('留言失败');
 
     }
+
 
 
 

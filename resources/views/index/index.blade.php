@@ -12,9 +12,11 @@
             <div class='column'>
                 <div class='featurette'>
                     <h3>{{ $category->name }}</h3>
+                    @if(!$is_mobile)
                     <div class='content text-muted'>
                         {!! $category->intro !!}
                     </div>
+                    @endif
                 </div>
             </div>
             @endforeach
@@ -105,7 +107,7 @@
     @if(count($categories))
         @foreach($categories as $key=>$category)
             <!--divided-->
-            <div class="ross_divided">
+            <div class="ross_divided" style="margin-bottom: 20px;">
                 <div class="ui vertically divided grid">
                     <div class="ui container stackable">
                         <div class="row">
