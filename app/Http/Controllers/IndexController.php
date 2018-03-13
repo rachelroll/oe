@@ -76,21 +76,23 @@ class IndexController extends Controller
     public function sendMessage()
     {
         $value = request('value');
+        $model = request('model','通用留言,无针对型号');
         if ($value) {
             if (!$value['contact']) {
-                return response()->json('留个联系方式吧');
+                return response()->json(['message'=>'留个联系方式吧']);
             }
             $data = [
                 'name'=>$value['name'] ?:'',
                 'contact'=>$value['contact'] ?:'',
                 'message'=>$value['message'] ?:'',
+                'model'=>$model,
             ];
             $message = Message::create($data);
             if ($message) {
                 return response()->json(['message'=>'感谢您的留言,我们会及时联系您']);
             }
         }
-        return response()->json('留言失败');
+        return response()->json(['message'=>'留言失败']);
 
     }
 

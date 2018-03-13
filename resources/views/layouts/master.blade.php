@@ -166,47 +166,46 @@
                 showCancelButton: true,
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
+                showLoaderOnConfirm: true,
+                allowOutsideClick: false,
                 preConfirm: function(result) {
+
                     return new Promise(function(resolve) {
+
                         if (result) {
-                            resolve([
-                                $('#swal-input0').val(),
-                                $('#swal-input1').val(),
-                                $('#swal-input2').val()
-                            ]);
+                            var val = {
+                                name:$('#swal-input0').val(),
+                                contact:$('#swal-input1').val(),
+                                message:$('#swal-input2').val()
+                            };
+                            if(!val.contact) {
+                                swal('哎呦……', '留个联系方式吧');
+                                return false;
+                            }
+
+                            $.ajax({
+                                url: '/send-message',
+                                type: 'POST',
+                                dataType: 'json',
+                                data: {
+                                    _token: '{{ csrf_token() }}',
+                                    value: val
+                                }
+                            })
+                                .done(function (response) {
+                                    console.log(response);
+                                    swal({
+                                        type: 'success',
+                                        html: response.message
+                                    });
+                                })
+                                .fail(function () {
+                                    swal('哎呦……', '出错了');
+                                })
+
                         }
                     });
-                }
-            }).then(function (result) {
-                if(result.value) {
-                    if (result.value[1]) {
-                        var val = {
-                            name:result.value[0],
-                            contact:result.value[1],
-                            message:result.value[2]
-                        };
-                        $.ajax({
-                            url: '/send-message',
-                            type: 'POST',
-                            dataType: 'json',
-                            data: {
-                                _token: '{{ csrf_token() }}',
-                                value: val
-                            }
-                        })
-                            .done(function (response) {
-                                console.log(response);
-                                swal({
-                                    type: 'success',
-                                    html: response.message
-                                });
-                            })
-                            .fail(function () {
-                                swal('哎呦……', '出错了');
-                            })
-                    }else {
-                        swal("哎呦……",'请留个联系方式吧!!');
-                    }
+
                 }
             })
         });
