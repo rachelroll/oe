@@ -36,6 +36,18 @@
                                     </div>
                                 </div>
                                 <div class="extra content">
+                                    @if($product->buy_url)
+                                        <a class="ui green button" href="{{ $product->buy_url }}" target="_blank">
+                                            京东
+                                        </a>
+                                    @endif
+                                    @if($product->tm_url)
+                                        <a class="ui red button" href="{{ $product->tm_url }}" target="_blank">
+                                            天猫
+                                        </a>
+                                    @endif
+                                </div>
+                                <div class="extra content">
                                     <span>评级</span>
                                     <div class="ui star rating">
                                         @if($product->rating)
@@ -54,11 +66,6 @@
                                         @endif
                                     </div>
                                     <div class="ui labeled button right floated" tabindex="0">
-                                        @if($product->buy_url)
-                                            <a class="ui basic blue button" href="{{ $product->buy_url }}">
-                                                在线购买
-                                            </a>
-                                        @endif
                                         @if($product->price)
                                             <div class="ui basic left pointing blue label">
                                                 <span>¥{{ number_format($product->price,2) }}</span>

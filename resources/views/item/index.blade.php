@@ -4,6 +4,7 @@
     @stop
 @section('content')
     <div class="container">
+
         <div class="row center">
             <div class="col m12">
                 <h3>所有产品</h3>

@@ -219,5 +219,6 @@
 
         gtag('config', 'UA-115664041-1');
     </script>
+    <script src='https://publib.qinco.net/basicShare/0.4.min.js'></script>
 </body>
 </html>
