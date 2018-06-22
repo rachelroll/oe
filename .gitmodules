@@ -1,9 +1,9 @@
 [submodule "app/Models"]
 	path = app/Models
-	url = https://github.com/rachelli67890/oe-model.git
+	url = git@github.com:rachelli67890/oe-model.git
 [submodule "database"]
 	path = database
-	url = https://github.com/rachelroll/oe-database.git
+	url = git@github.com:rachelroll/oe-database.git
 [submodule "oehtml"]
 	path = oehtml
-	url = https://github.com/rachelli67890/oehtml.git
+	url = git@github.com:rachelli67890/oehtml.git
