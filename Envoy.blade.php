@@ -101,7 +101,7 @@ rm -rf storage
 @task('composer')
     cd {{$release_dir}}/{{$release}}
     pwd
-    composer install  --quiet --no-dev
+    composer install   --no-dev --ignore-platform-reqs
 @endtask
 
 @task('deployment_migrate')
