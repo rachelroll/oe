@@ -3,7 +3,12 @@
 @include('layouts.carousel')
 @section('content')
     <div class="ui text container">
-                    {!! $about->content !!}
+        @if(session('lan') == 'EN')
+            {!! $about->content_en !!}
+        @else
+            {!! $about->content !!}
+        @endif
+
             </div>
         </div>
     </div>

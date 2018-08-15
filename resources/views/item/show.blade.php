@@ -35,7 +35,11 @@
             <!-- JiaThis Button END -->
         </div>
         <p>
-            {!! $product->intro !!}
+            @if(session('lan') == 'EN'  && $product->intro_en)
+                {!! $product->intro_en !!}
+            @else
+                {!! $product->intro !!}
+            @endif
         </p>
 
                 {{--<div class="card center"  >--}}

@@ -13,7 +13,10 @@
 
 
 
-Route::get('/', 'IndexController@index');
+Route::get('/', 'IndexController@index')->name('index');
+Route::get('/en', 'IndexController@enIndex')->name('en.index');
+Route::get('/ch', 'IndexController@cnIndex')->name('cn.index');
+
 Route::resource('/register', 'RegisterController');
 Route::get('/login', 'RegisterController@login');
 Route::get('/product/{id}', 'ProductController@show')->name('product.show');//产品详情

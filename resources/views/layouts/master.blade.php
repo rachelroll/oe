@@ -18,7 +18,7 @@
     <title>OE360</title>
 
 </head>
-<body>
+<body>IndexController
     <section id="ross_menu" style="margin-bottom: 48px">
     <div class="ui vertical inverted sidebar icon labeled menu">
         <a class="active item">Home</a>
@@ -35,10 +35,19 @@
                 <i class="sidebar icon"></i>
             </a>
             <a href="{{ url('/') }}" class="item">
-                <i class="home icon"></i> 主页
+                <i class="home icon"></i>
+                @if(session('lan') == 'EN')
+                    Home
+                    @else
+                    主页
+                    @endif
             </a>
             <div class="ui simple dropdown item">
+                @if(session('lan') == 'EN')
+                    Products
+                @else
                 产品中心
+                @endif
                 <i class="dropdown icon"></i>
                 @if($categories_links)
                 <div class="menu  dropdown-content">
@@ -66,22 +75,46 @@
             </div>
             <div class="ui simple dropdown item">
                 <i class="grid layout icon"></i>
-                关于
+                @if(session('lan') == 'EN')
+                    About Us
+                @else
+                    关于
+                @endif
                 <i class="dropdown icon"></i>
                 @if($about_links)
                 <div class="menu ">
                     <div class="ui container">
                         @foreach($about_links as $about_link)
-                        <a class="item" href="{{ route('about.show',['id'=>$about_link->id]) }}">
-                            <i class="home icon"></i> {{ $about_link->title }}
-                        </a>
+
+                        @if(session('lan') == 'EN')
+                                <a class="item" href="{{ route('about.show',['id'=>$about_link->id]) }}">
+                                    <i class="home icon"></i> {{ $about_link->title_en }}
+                                </a>
+                        @else
+                                <a class="item" href="{{ route('about.show',['id'=>$about_link->id]) }}">
+                                    <i class="home icon"></i> {{ $about_link->title }}
+                                </a>
+                        @endif
                         @endforeach
                     </div>
                 </div>
                     @endif
             </div>
             <div class="right item">
-                <div class="ui input"><input id="search" type="text" placeholder="搜索..."></div>
+                <div class="ui input">
+                    <input id="search" type="text" placeholder="搜索...">
+                    <select id="lan" class="ui search dropdown" style="margin-left: 12px">
+                        @if(session('lan') == 'EN')
+                            <option value="EN" selected>English</option>
+                            <option value="CN">中文</option>
+                        @else
+                            <option value="CN" selected>中文</option>
+                            <option value="EN">English</option>
+
+                        @endif
+
+                    </select>
+                </div>
             </div>
         </div>
     </div>
@@ -209,6 +242,15 @@
                 }
             })
         });
+        $(function () {
+            $('#lan').on('change',function() {
+                if($(this).val() == 'EN') {
+                    location.href = '{{ route('en.index') }}'
+                } else {
+                    location.href = '{{ route('cn.index') }}'
+                }
+            })
+        })
     </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115664041-1"></script>
@@ -220,5 +262,6 @@
         gtag('config', 'UA-115664041-1');
     </script>
     <script src='https://publib.qinco.net/basicShare/0.4.min.js'></script>
+
 </body>
 </html>

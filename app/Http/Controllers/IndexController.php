@@ -8,11 +8,62 @@ use App\Models\Message;
 use App\Models\NewPosition;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class IndexController extends Controller
 {
     public function index()
     {
+        return view('index.main-index');
+    }
+
+    public function sendMessage()
+    {
+        $value = request('value');
+        $model = request('model','通用留言,无针对型号');
+        if ($value) {
+            if (!$value['contact']) {
+                return response()->json(['message'=>'留个联系方式吧']);
+            }
+            $data = [
+                'name'=>$value['name'] ?:'',
+                'contact'=>$value['contact'] ?:'',
+                'message'=>$value['message'] ?:'',
+                'model'=>$model,
+            ];
+            $message = Message::create($data);
+            if ($message) {
+                return response()->json(['message'=>'感谢您的留言,我们会及时联系您']);
+            }
+        }
+        return response()->json(['message'=>'留言失败']);
+
+    }
+
+    public function enIndex()
+    {
+        Session::put('lan','EN');
+        return $this->render();
+
+    }
+
+    public function cnIndex()
+    {
+        Session::put('lan','CN');
+        return $this->render();
+
+    }
+
+    private function render()
+    {
+        //$language = request('lan','CN');
+        //$lan = session('lan');
+        //Session::forget('lan');
+        //Session::flush();
+        //$lan = '';
+        //if (!$lan) {
+        //    $lan = Session::put('lan', 'EN');
+        //}
         $categories = Category::has('product')->where('enabled',1)->orderBy('sort','ASC')->limit(6)->get();
         $is_mobile = false;
         if(isset($_SERVER['HTTP_USER_AGENT'])) {
@@ -73,28 +124,7 @@ class IndexController extends Controller
         return view('index.index', compact('catProductArr','categories','newProductArr','positionLayout','is_mobile'));
     }
 
-    public function sendMessage()
-    {
-        $value = request('value');
-        $model = request('model','通用留言,无针对型号');
-        if ($value) {
-            if (!$value['contact']) {
-                return response()->json(['message'=>'留个联系方式吧']);
-            }
-            $data = [
-                'name'=>$value['name'] ?:'',
-                'contact'=>$value['contact'] ?:'',
-                'message'=>$value['message'] ?:'',
-                'model'=>$model,
-            ];
-            $message = Message::create($data);
-            if ($message) {
-                return response()->json(['message'=>'感谢您的留言,我们会及时联系您']);
-            }
-        }
-        return response()->json(['message'=>'留言失败']);
 
-    }
 
 
 
